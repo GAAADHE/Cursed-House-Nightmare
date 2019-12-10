@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Node2D.gd" type="Script" id=1]
+[ext_resource path="res://assets/bomb/bomb.1.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20, 20 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 20, 20 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 20, 20 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 20, 20 )
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 20.0
+
+[node name="HUD" type="CanvasLayer"]
+editor/display_folded = true
+
+[node name="BarLife" type="ProgressBar" parent="."]
+margin_left = 5.26318
+margin_top = 5.26317
+margin_right = 135.263
+margin_bottom = 19.2632
+max_value = 1000.0
+
+[node name="Points" type="Label" parent="."]
+margin_left = 267.0
+margin_top = 6.0
+margin_right = 342.0
+margin_bottom = 37.0
+rect_pivot_offset = Vector2( 39.8201, 14.2582 )
+text = "0
+"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 59, 223 )
+z_index = 20
+script = ExtResource( 1 )
+
+[node name="down" type="TouchScreenButton" parent="Node2D"]
+z_index = 20
+shape = SubResource( 1 )
+action = "player_down"
+
+[node name="up" type="TouchScreenButton" parent="Node2D"]
+position = Vector2( 1, -80 )
+z_index = 20
+shape = SubResource( 2 )
+action = "player_up"
+
+[node name="left" type="TouchScreenButton" parent="Node2D"]
+position = Vector2( -40, -40 )
+z_index = 20
+shape = SubResource( 3 )
+action = "player_left"
+
+[node name="right" type="TouchScreenButton" parent="Node2D"]
+position = Vector2( 43, -41 )
+z_index = 20
+shape = SubResource( 4 )
+action = "player_right"
+
+[node name="bomb" type="TouchScreenButton" parent="Node2D"]
+position = Vector2( 228, -90 )
+scale = Vector2( 3.375, 3.0625 )
+z_index = 20
+normal = ExtResource( 2 )
+shape = SubResource( 5 )
+action = "player_atack"
