@@ -14,6 +14,7 @@ var animTransIsEnabled = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print(get_parent().name," node")
 	get_node("BombAnimation").set_frame(0)
 	get_node("BombAnimation").play("loading",false)
 	
@@ -51,7 +52,6 @@ func _process(delta):
 							
 							#var radiusBomb = (get_node("CollisionShape2D").get_shape().radius)
 							var sizeTile = + collisionVar.collider.get_cell_size()
-							get_node("../teste").set_position(vec2)
 							if is_on_wall():
 								#verify if are inner area top tile
 								if vec1.x >= vec2.x and vec1.x <= vec2.x + sizeTile.x:
@@ -64,6 +64,10 @@ func _process(delta):
 											transVect.y = transVect.y * -1
 											pass
 									pass
+									#move_and_slide(transVect, Vector2(0,0))
+									translateEndPosition.x = get_position().x + 10
+									translateEndPosition.y = get_position().y + 10
+									transStartPosition=get_position()
 								#verify if walls area
 								else:
 									if vec1.y >= vec2.y and vec1.y <= vec2.y + sizeTile.y:

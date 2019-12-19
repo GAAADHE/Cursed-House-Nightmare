@@ -19,7 +19,6 @@ extents = Vector2( 20, 20 )
 radius = 20.0
 
 [node name="HUD" type="CanvasLayer"]
-editor/display_folded = true
 
 [node name="BarLife" type="ProgressBar" parent="."]
 margin_left = 5.26318

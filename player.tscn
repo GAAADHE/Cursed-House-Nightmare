@@ -57,8 +57,8 @@ animations = [ {
 "speed": 30.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 6, 4 )
+[sub_resource type="CircleShape2D" id=2]
+radius = 5.0
 
 [node name="player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -66,7 +66,7 @@ SPEED = 70
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "onAir"
+animation = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2( 2, 2 )

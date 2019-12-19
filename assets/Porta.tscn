@@ -1,0 +1,159 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Porta.gd" type="Script" id=1]
+[ext_resource path="res://atlas.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Closed"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 961, 964 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Closing"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 967, 966, 965, 964, 963, 962, 961 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 961, 962, 963, 964, 965, 966, 967 ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 1, 1 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 8, 5 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 8, 2 )
+
+[node name="Porta" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 8, -19 )
+z_index = 10
+z_as_relative = false
+
+[node name="Door" type="Node2D" parent="."]
+
+[node name="Fundo" type="Sprite" parent="Door"]
+texture = ExtResource( 2 )
+normal_map = SubResource( 1 )
+centered = false
+vframes = 64
+hframes = 64
+frame = 968
+region_rect = Rect2( 0, 239, 121, 25 )
+
+[node name="WoodDoor" type="Sprite" parent="Door"]
+texture = ExtResource( 2 )
+normal_map = SubResource( 1 )
+centered = false
+vframes = 64
+hframes = 64
+frame = 961
+
+[node name="Animation" type="AnimationPlayer" parent="Door/WoodDoor"]
+playback_speed = 8.0
+anims/Closed = SubResource( 2 )
+anims/Closing = SubResource( 3 )
+anims/Opening = SubResource( 4 )
+
+[node name="Frame" type="Sprite" parent="Door"]
+texture = ExtResource( 2 )
+normal_map = SubResource( 1 )
+centered = false
+vframes = 64
+hframes = 64
+frame = 960
+region_rect = Rect2( 0, 239, 121, 25 )
+
+[node name="Frame2" type="Sprite" parent="Door"]
+position = Vector2( 10, 4 )
+z_index = 1
+texture = ExtResource( 2 )
+normal_map = SubResource( 1 )
+centered = false
+offset = Vector2( -9.99, -4 )
+vframes = 128
+hframes = 64
+frame = 1920
+region_rect = Rect2( 0, 0, 16, 16 )
+region_filter_clip = true
+
+[node name="Frame3" type="Sprite" parent="Door"]
+position = Vector2( 10, -4 )
+z_index = 1
+texture = ExtResource( 2 )
+normal_map = SubResource( 1 )
+centered = false
+offset = Vector2( -9.99, -4 )
+vframes = 128
+hframes = 64
+frame = 1804
+region_rect = Rect2( 0, 0, 16, 16 )
+region_filter_clip = true
+
+[node name="Area2D" type="Area2D" parent="Door"]
+editor/display_folded = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/Area2D"]
+position = Vector2( 8, 18 )
+shape = SubResource( 5 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Door"]
+visible = false
+
+[node name="Collider" type="CollisionShape2D" parent="Door/StaticBody2D"]
+position = Vector2( 8, 10 )
+shape = SubResource( 6 )
+
+[node name="LeftRightCollide" type="StaticBody2D" parent="Door"]
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Door/LeftRightCollide"]
+build_mode = 1
+polygon = PoolVector2Array( 16, 14, 18, 15, 16, 4, 14, 4, 14, 12 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door/LeftRightCollide"]
+build_mode = 1
+polygon = PoolVector2Array( 0, 14, -3, 15, 0, 4, 2, 4, 2, 12 )
+
+[node name="Portal" type="Area2D" parent="Door"]
+
+[node name="PortalArea" type="CollisionShape2D" parent="Door/Portal"]
+position = Vector2( 8, 2 )
+shape = SubResource( 7 )

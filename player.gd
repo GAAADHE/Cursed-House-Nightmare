@@ -1,11 +1,12 @@
 extends KinematicBody2D
-
+var isAPlayer = true
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 export var SPEED = 400
 export var life_bar = 1000
 export var invencible = false
+export var noCollide = false
 
 var movedir = Vector2()
 #var keys = {"keyup":false,"keydown":false,"keyleft":false,"keyright":false}
@@ -21,6 +22,8 @@ var translateEndPosition = Vector2()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if noCollide == true:
+		get_node("CollisionShape2D").disabled = true
 	get_node("AnimatedSprite").play("idle")
 	pass # Replace with function body.
 
