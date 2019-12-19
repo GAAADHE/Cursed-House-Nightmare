@@ -47,10 +47,8 @@ extents = Vector2( 132, 90 )
 [node name="House" type="Node2D"]
 
 [node name="Entrace" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Area2D" type="Area2D" parent="Entrace"]
-editor/display_folded = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Entrace/Area2D"]
 polygon = PoolVector2Array( 281, 456, 415, 457, 405, 646, 281, 638 )
@@ -79,15 +77,13 @@ format = 1
 tile_data = PoolIntArray( 1900562, 0, 655371, 1900563, 0, 655372, 1900564, 0, 655372, 1900565, 0, 655373, 1900566, 0, 655373, 1900567, 0, 655373, 1900568, 0, 655375, 1966098, 0, 720907, 1966099, 0, 720908, 1966100, 0, 1376267, 1966102, 0, 1376267, 1966103, 0, 720910, 1966104, 0, 720911, 2031634, 0, 720907, 2031635, 0, 786444, 2031639, 0, 1114124, 2031640, 0, 720911, 2097170, 0, 720907, 2097171, 0, 786444, 2097175, 0, 1114124, 2097176, 0, 720911, 2162706, 0, 720907, 2162707, 0, 786444, 2162711, 0, 1114124, 2162712, 0, 720911, 2228242, 0, 720907, 2228243, 0, 786444, 2228247, 0, 1114124, 2228248, 0, 720911, 2293778, 0, 720907, 2293779, 0, 786444, 2293783, 0, 1114124, 2293784, 0, 720911, 2359314, 0, 720907, 2359315, 0, 786444, 2359319, 0, 1114124, 2359320, 0, 720911, 2424850, 0, 720907, 2424851, 0, 851980, 2424852, 0, 1179659, 2424854, 0, 1179659, 2424855, 0, 851982, 2424856, 0, 720911, 2490386, 0, 917515, 2490387, 0, 917516, 2490388, 0, 917516, 2490389, 0, 917516, 2490390, 0, 917516, 2490391, 0, 917516, 2490392, 0, 917519 )
 
 [node name="Entrace" type="Node2D" parent="Entrace"]
-editor/display_folded = true
 
 [node name="EntraceToHall" parent="Entrace/Entrace" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 336, 480 )
 portal_destiny = Vector2( 248, 216 )
 
 [node name="Position2D" parent="Entrace/Entrace/EntraceToHall" index="0"]
-position = Vector2( 12, -88 )
+position = Vector2( -88, -258 )
 
 [node name="Entrace2" parent="Entrace/Entrace" instance=ExtResource( 3 )]
 editor/display_folded = true
@@ -96,7 +92,7 @@ rotation = -3.14159
 portal_destiny = Vector2( 352, 592 )
 
 [node name="Position2D" parent="Entrace/Entrace/Entrace2" index="0"]
-position = Vector2( 8, -29 )
+position = Vector2( 8.00012, 37 )
 
 [node name="EntraceToLivingRoom" parent="Entrace/Entrace" instance=ExtResource( 3 )]
 editor/display_folded = true
@@ -105,13 +101,18 @@ rotation = 1.57079
 portal_destiny = Vector2( 537, 536 )
 
 [node name="Position2D" parent="Entrace/Entrace/EntraceToLivingRoom" index="0"]
-position = Vector2( 8.00067, -116 )
+position = Vector2( 8.00092, -146 )
+
+[node name="Door" parent="Entrace/Entrace/EntraceToLivingRoom" index="1"]
+editor/display_folded = true
 
 [node name="Fog" parent="Entrace" instance=ExtResource( 4 )]
 
 [node name="Living Room" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Area2D" type="Area2D" parent="Living Room"]
+editor/display_folded = true
 position = Vector2( 600, 533 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Living Room/Area2D"]
@@ -142,27 +143,28 @@ format = 1
 tile_data = PoolIntArray( 1900575, 0, 655371, 1900576, 0, 655372, 1900577, 0, 655373, 1900578, 0, 655373, 1900579, 0, 655373, 1900580, 0, 655373, 1900581, 0, 655373, 1900582, 0, 655373, 1900583, 0, 655373, 1900584, 0, 655373, 1900585, 0, 655373, 1900586, 0, 655373, 1900587, 0, 655373, 1900588, 0, 655372, 1900589, 0, 655375, 1966111, 0, 720907, 1966112, 0, 720908, 1966113, 0, 720909, 1966114, 0, 720909, 1966115, 0, 720909, 1966116, 0, 720909, 1966117, 0, 720909, 1966118, 0, 720909, 1966120, 0, 1376267, 1966121, 0, 1376267, 1966122, 0, 720909, 1966123, 0, 720909, 1966124, 0, 720910, 1966125, 0, 786447, 2031647, 0, 786443, 2031648, 0, 786444, 2031660, 0, 786446, 2031661, 0, 786447, 2097183, 0, 786443, 2097184, 0, 786444, 2097196, 0, 786446, 2097197, 0, 786447, 2162719, 0, 786443, 2162732, 0, 786446, 2162733, 0, 786447, 2228255, 0, 786443, 2228256, 0, 786444, 2228268, 0, 786446, 2228269, 0, 786447, 2293791, 0, 786443, 2293792, 0, 786444, 2293804, 0, 786446, 2293805, 0, 786447, 2359327, 0, 786443, 2359328, 0, 786444, 2359340, 0, 786446, 2359341, 0, 786447, 2424863, 0, 720907, 2424864, 0, 851980, 2424865, 0, 851981, 2424866, 0, 851981, 2424867, 0, 851981, 2424868, 0, 851981, 2424869, 0, 851981, 2424870, 0, 851981, 2424871, 0, 851981, 2424872, 0, 851981, 2424873, 0, 851981, 2424874, 0, 851981, 2424875, 0, 851981, 2424876, 0, 851982, 2424877, 0, 720911, 2490399, 0, 917515, 2490400, 0, 917516, 2490401, 0, 917516, 2490402, 0, 917516, 2490403, 0, 917516, 2490404, 0, 917516, 2490405, 0, 917516, 2490406, 0, 917516, 2490407, 0, 917516, 2490408, 0, 917516, 2490409, 0, 917516, 2490410, 0, 917516, 2490411, 0, 917516, 2490412, 0, 917516, 2490413, 0, 917519 )
 
 [node name="Living Room" type="Node2D" parent="Living Room"]
+editor/display_folded = true
 
-[node name="EntraceToHall" parent="Living Room/Living Room" instance=ExtResource( 3 )]
+[node name="LivingToDiningRoom" parent="Living Room/Living Room" instance=ExtResource( 3 )]
 editor/display_folded = true
 position = Vector2( 624, 480 )
 portal_destiny = Vector2( 648, 360 )
 
-[node name="Position2D" parent="Living Room/Living Room/EntraceToHall" index="0"]
-position = Vector2( 8, -230 )
+[node name="Position2D" parent="Living Room/Living Room/LivingToDiningRoom" index="0"]
+position = Vector2( 24, -114 )
 
 [node name="EntraceToRoom" parent="Living Room/Living Room" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 512, 544 )
 rotation = -1.5708
 portal_destiny = Vector2( 375, 538 )
 
 [node name="Position2D" parent="Living Room/Living Room/EntraceToRoom" index="0"]
-position = Vector2( 8.00043, -116 )
+position = Vector2( 9.00049, -147 )
 
 [node name="Fog" parent="Living Room" instance=ExtResource( 4 )]
 
 [node name="Dinning room" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Area2D" type="Area2D" parent="Dinning room"]
 editor/display_folded = true
@@ -201,7 +203,7 @@ rotation = -1.5708
 portal_destiny = Vector2( 503, 137 )
 
 [node name="Position2D" parent="Dinning room/Dinning Room/DinningRoomToKitchen" index="0"]
-position = Vector2( 10, -147 )
+position = Vector2( 136, -81.9995 )
 
 [node name="Door" parent="Dinning room/Dinning Room/DinningRoomToKitchen" index="1"]
 editor/display_folded = true
@@ -212,7 +214,10 @@ rotation = -3.14159
 portal_destiny = Vector2( 633, 504 )
 
 [node name="Position2D" parent="Dinning room/Dinning Room/DinningRoomToLivingRoom" index="0"]
-position = Vector2( 9, -231 )
+position = Vector2( 22.9997, -117 )
+
+[node name="Door" parent="Dinning room/Dinning Room/DinningRoomToLivingRoom" index="1"]
+editor/display_folded = true
 
 [node name="Fog" parent="Dinning room" instance=ExtResource( 4 )]
 
@@ -249,7 +254,6 @@ format = 1
 tile_data = PoolIntArray( -131036, 0, 655371, -131035, 0, 655372, -131034, 0, 655373, -131033, 0, 655373, -131032, 0, 655373, -131031, 0, 655373, -131030, 0, 655373, -131029, 0, 655373, -131028, 0, 655373, -131027, 0, 655372, -131026, 0, 655375, -65500, 0, 720907, -65499, 0, 720908, -65498, 0, 720909, -65497, 0, 720909, -65496, 0, 720909, -65495, 0, 720909, -65494, 0, 720909, -65493, 0, 720909, -65492, 0, 720909, -65491, 0, 720910, -65490, 0, 786447, 36, 0, 786443, 37, 0, 786444, 45, 0, 786446, 46, 0, 786447, 65572, 0, 786443, 65573, 0, 786444, 65581, 0, 786446, 65582, 0, 786447, 131108, 0, 786443, 131117, 0, 786446, 131118, 0, 786447, 196644, 0, 786443, 196645, 0, 786444, 196653, 0, 786446, 196654, 0, 786447, 262180, 0, 786443, 262181, 0, 786444, 262189, 0, 786446, 262190, 0, 786447, 327716, 0, 720907, 327717, 0, 851980, 327718, 0, 851981, 327719, 0, 851981, 327720, 0, 851981, 327721, 0, 851981, 327722, 0, 851981, 327723, 0, 851981, 327724, 0, 851981, 327725, 0, 851982, 327726, 0, 720911, 393252, 0, 917515, 393253, 0, 917516, 393254, 0, 917516, 393255, 0, 917516, 393256, 0, 917516, 393257, 0, 917516, 393258, 0, 917516, 393259, 0, 917516, 393260, 0, 917516, 393261, 0, 917516, 393262, 0, 917519 )
 
 [node name="Laundry" type="Node2D" parent="Laundry"]
-editor/display_folded = true
 
 [node name="laundryToKitchen" parent="Laundry/Laundry" instance=ExtResource( 3 )]
 position = Vector2( 609, 162 )
@@ -257,7 +261,7 @@ rotation = -1.5708
 portal_destiny = Vector2( 503, 40 )
 
 [node name="Position2D" parent="Laundry/Laundry/laundryToKitchen" index="0"]
-position = Vector2( 132, -359 )
+position = Vector2( 122, -98.9996 )
 
 [node name="Door" parent="Laundry/Laundry/laundryToKitchen" index="1"]
 position = Vector2( 114, -17 )
@@ -301,28 +305,34 @@ tile_data = PoolIntArray( -131049, 0, 655371, -131048, 0, 655372, -131047, 0, 65
 editor/display_folded = true
 
 [node name="kitchenToHall" parent="Kitchen/Kitchen" instance=ExtResource( 3 )]
+editor/display_folded = true
 position = Vector2( 464, 240 )
 rotation = -3.14159
 portal_destiny = Vector2( 248, 168 )
 
 [node name="Position2D" parent="Kitchen/Kitchen/kitchenToHall" index="0"]
-position = Vector2( 6, -82 )
+position = Vector2( 216, 76.9994 )
+
+[node name="Door" parent="Kitchen/Kitchen/kitchenToHall" index="1"]
+editor/display_folded = true
 
 [node name="kitchenToLaundry" parent="Kitchen/Kitchen" instance=ExtResource( 3 )]
+editor/display_folded = true
 position = Vector2( 528, 32 )
 rotation = 1.5708
 portal_destiny = Vector2( 616, 40 )
 
 [node name="Position2D" parent="Kitchen/Kitchen/kitchenToLaundry" index="0"]
-position = Vector2( 18, -342 )
+position = Vector2( 6.99973, -82 )
 
 [node name="kitchenToDinningRoom" parent="Kitchen/Kitchen" instance=ExtResource( 3 )]
+editor/display_folded = true
 position = Vector2( 528, 128 )
 rotation = 1.5708
 portal_destiny = Vector2( 617, 263 )
 
 [node name="Position2D" parent="Kitchen/Kitchen/kitchenToDinningRoom" index="0"]
-position = Vector2( 10, -146 )
+position = Vector2( 135, -82.0005 )
 
 [node name="Fog" parent="Kitchen" instance=ExtResource( 4 )]
 
@@ -359,7 +369,6 @@ format = 1
 tile_data = PoolIntArray( 524298, 0, 655371, 524299, 0, 655372, 524300, 0, 655372, 524301, 0, 655373, 524302, 0, 655373, 524303, 0, 655373, 524304, 0, 655373, 524305, 0, 655373, 524306, 0, 655374, 524307, 0, 655373, 524308, 0, 655375, 589834, 0, 720907, 589835, 0, 720908, 589836, 0, 1376267, 589837, 0, 720909, 589838, 0, 1376267, 589840, 0, 1376267, 589841, 0, 720909, 589842, 0, 1376267, 589843, 0, 720910, 589844, 0, 720911, 655370, 0, 720907, 655371, 0, 1114127, 655379, 0, 786446, 655380, 0, 720911, 720906, 0, 720907, 720915, 0, 786446, 720916, 0, 720911, 786442, 0, 720907, 786443, 0, 786444, 786451, 0, 786446, 786452, 0, 720911, 851978, 0, 720907, 851979, 0, 1114127, 851987, 0, 786446, 851988, 0, 720911, 917514, 0, 720907, 917515, 0, 851980, 917516, 0, 1179659, 917517, 0, 851981, 917518, 0, 851981, 917520, 0, 851981, 917521, 0, 851981, 917522, 0, 1179659, 917523, 0, 851982, 917524, 0, 720911, 983050, 0, 917515, 983051, 0, 917516, 983052, 0, 917516, 983053, 0, 917516, 983054, 0, 917516, 983055, 0, 917516, 983056, 0, 917516, 983057, 0, 917516, 983058, 0, 917516, 983059, 0, 917517, 983060, 0, 917519 )
 
 [node name="Hall" type="Node2D" parent="Hall"]
-editor/display_folded = true
 
 [node name="EntraceToKitchen" parent="Hall/Hall" instance=ExtResource( 3 )]
 editor/display_folded = true
@@ -367,7 +376,7 @@ position = Vector2( 240, 144 )
 portal_destiny = Vector2( 456, 216 )
 
 [node name="Position2D" parent="Hall/Hall/EntraceToKitchen" index="0"]
-position = Vector2( 6, -82 )
+position = Vector2( 216, 80 )
 
 [node name="EntraceToHall" parent="Hall/Hall" instance=ExtResource( 3 )]
 editor/display_folded = true
@@ -376,7 +385,7 @@ rotation = -3.14159
 portal_destiny = Vector2( 345, 502 )
 
 [node name="Position2D" parent="Hall/Hall/EntraceToHall" index="0"]
-position = Vector2( 12, -88 )
+position = Vector2( -88.0007, -258 )
 
 [node name="EntraceToRow" parent="Hall/Hall" instance=ExtResource( 3 )]
 editor/display_folded = true
@@ -385,7 +394,7 @@ rotation = -1.5708
 portal_destiny = Vector2( 136, 328 )
 
 [node name="Position2D" parent="Hall/Hall/EntraceToRow" index="0"]
-position = Vector2( 7.00037, -104 )
+position = Vector2( -136, -34.0005 )
 
 [node name="Fog" parent="Hall" instance=ExtResource( 4 )]
 
@@ -431,7 +440,7 @@ position = Vector2( 16, 288 )
 portal_destiny = Vector2( 24, 152 )
 
 [node name="Position2D" parent="Row/Row/rowToPlayerRoom" index="0"]
-position = Vector2( 11, -93 )
+position = Vector2( 8, -131 )
 
 [node name="rowToHall" parent="Row/Row" instance=ExtResource( 3 )]
 editor/display_folded = true
@@ -440,7 +449,7 @@ rotation = 1.57079
 portal_destiny = Vector2( 216, 200 )
 
 [node name="Position2D" parent="Row/Row/rowToHall" index="0"]
-position = Vector2( 7.00066, -104 )
+position = Vector2( -135, -34.0008 )
 
 [node name="rowToBathdroom" parent="Row/Row" instance=ExtResource( 3 )]
 editor/display_folded = true
@@ -448,16 +457,16 @@ position = Vector2( 96, 288 )
 portal_destiny = Vector2( 96, 304 )
 
 [node name="Position2D" parent="Row/Row/rowToBathdroom" index="0"]
+visible = false
 position = Vector2( -25, 26 )
 
 [node name="rowToParentsRoom" parent="Row/Row" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 32, 384 )
 rotation = -3.14159
 portal_destiny = Vector2( 24, 488 )
 
 [node name="Position2D" parent="Row/Row/rowToParentsRoom" index="0"]
-position = Vector2( 7.99998, -87 )
+position = Vector2( 7.99975, -98 )
 
 [node name="Fog" parent="Row" instance=ExtResource( 4 )]
 
@@ -505,7 +514,7 @@ rotation = -3.14159
 portal_destiny = Vector2( 23, 311 )
 
 [node name="Position2D" parent="Players room/Players Bedroom/pRoomToRow" index="0"]
-position = Vector2( 11, -93 )
+position = Vector2( 7.99967, -130 )
 
 [node name="Fog" parent="Players room" instance=ExtResource( 4 )]
 
@@ -513,6 +522,7 @@ position = Vector2( 11, -93 )
 editor/display_folded = true
 
 [node name="Area2D" type="Area2D" parent="Parents Room"]
+editor/display_folded = true
 position = Vector2( 60, 539 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Parents Room/Area2D"]
@@ -543,14 +553,13 @@ format = 1
 tile_data = PoolIntArray( 1900541, 0, 655371, 1900542, 0, 655372, 1900543, 0, 655373, 1835008, 0, 655373, 1835009, 0, 655373, 1835010, 0, 655373, 1835011, 0, 655373, 1835012, 0, 655373, 1835013, 0, 655373, 1835014, 0, 655373, 1835015, 0, 655373, 1835016, 0, 655373, 1835017, 0, 655373, 1835018, 0, 655375, 1966077, 0, 720907, 1966078, 0, 720908, 1966079, 0, 720909, 1900544, 0, 720909, 1900546, 0, 1376267, 1900547, 0, 720909, 1900548, 0, 720909, 1900549, 0, 720909, 1900550, 0, 720909, 1900551, 0, 720909, 1900552, 0, 720909, 1900553, 0, 720910, 1900554, 0, 720911, 2031613, 0, 786443, 2031614, 0, 786444, 1966089, 0, 786446, 1966090, 0, 720911, 2097149, 0, 786443, 2097150, 0, 786444, 2031625, 0, 786446, 2031626, 0, 720911, 2162685, 0, 786443, 2162686, 0, 786444, 2097161, 0, 786446, 2097162, 0, 720911, 2228221, 0, 786443, 2228222, 0, 786444, 2162697, 0, 786446, 2162698, 0, 720911, 2293757, 0, 786443, 2293758, 0, 786444, 2228233, 0, 786446, 2228234, 0, 720911, 2359293, 0, 786443, 2359294, 0, 786444, 2293769, 0, 786446, 2293770, 0, 720911, 2424829, 0, 786443, 2424830, 0, 786444, 2359305, 0, 786446, 2359306, 0, 720911, 2490365, 0, 851979, 2490366, 0, 851980, 2490367, 0, 851981, 2424832, 0, 851981, 2424833, 0, 851981, 2424834, 0, 851981, 2424835, 0, 851981, 2424836, 0, 851981, 2424837, 0, 851981, 2424838, 0, 851981, 2424839, 0, 851981, 2424840, 0, 851981, 2424841, 0, 851982, 2424842, 0, 720911, 2555901, 0, 917515, 2555902, 0, 917516, 2555903, 0, 917516, 2490368, 0, 917516, 2490369, 0, 917516, 2490370, 0, 917516, 2490371, 0, 917516, 2490372, 0, 917516, 2490373, 0, 917516, 2490374, 0, 917516, 2490375, 0, 917516, 2490376, 0, 917516, 2490377, 0, 917518, 2490378, 0, 917519 )
 
 [node name="Parents Bedroom" type="Node2D" parent="Parents Room"]
-editor/display_folded = true
 
 [node name="pRoomToRow" parent="Parents Room/Parents Bedroom" instance=ExtResource( 3 )]
 position = Vector2( 16, 464 )
 portal_destiny = Vector2( 24, 361 )
 
 [node name="Position2D" parent="Parents Room/Parents Bedroom/pRoomToRow" index="0"]
-position = Vector2( 8, -87 )
+position = Vector2( 8, -98 )
 
 [node name="Fog" parent="Parents Room" instance=ExtResource( 4 )]
 
@@ -565,7 +574,7 @@ format = 1
 
 [editable path="Entrace/Entrace/EntraceToLivingRoom"]
 
-[editable path="Living Room/Living Room/EntraceToHall"]
+[editable path="Living Room/Living Room/LivingToDiningRoom"]
 
 [editable path="Living Room/Living Room/EntraceToRoom"]
 

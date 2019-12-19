@@ -37,8 +37,8 @@ func _process(delta):
 						nodeParentMap.add_child(source)
 						source.owner = nodeParentMap
 						source.set_position(pos)
-						print("plauer are in:", source.get_parent().name)
-						print("plauer owner in:", source.owner.name)
+						#print("plauer are in:", source.get_parent().name)
+						#print("plauer owner in:", source.owner.name)
 		nodeParentMap.set_visible(findPlayer) #if find player turn on visible or not
 		
 	pass

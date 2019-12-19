@@ -14,7 +14,7 @@ var animTransIsEnabled = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(get_parent().name," node")
+	#print(get_parent().name," node")
 	get_node("BombAnimation").set_frame(0)
 	get_node("BombAnimation").play("loading",false)
 	
