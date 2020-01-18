@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/door-07.wav-030d7e1b1739c87f10cd46efac980e8b.sample"
+
+[deps]
+
+source_file="res://assets/porta/sounfx/door-07.wav"
+dest_files=[ "res://.import/door-07.wav-030d7e1b1739c87f10cd46efac980e8b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

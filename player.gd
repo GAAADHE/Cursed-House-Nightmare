@@ -8,6 +8,9 @@ export var life_bar = 1000
 export var invencible = false
 export var noCollide = false
 
+#dash
+var dashCountdown = 0
+
 var movedir = Vector2()
 #var keys = {"keyup":false,"keydown":false,"keyleft":false,"keyright":false}
 
@@ -19,7 +22,8 @@ var animTransIsEnabled = false
 var transVect = Vector2()
 var transStartPosition = Vector2()
 var translateEndPosition = Vector2()
-
+var bustDash = 0
+var varlueAnalog = Vector2(0,0)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if noCollide == true:
@@ -29,16 +33,48 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	
+	varlueAnalog = get_node("HUD/Node2D/AnalogButton/AnalogBig").get_value()
+	move_and_slide(varlueAnalog * (SPEED+bustDash), Vector2(0,0))
+	
 	if ! animTransIsEnabled:
-		if ! get_parent().has_node("HUD"):
+		if ! has_node("HUD"):
 			var playerHUD = HUDscene.instance()
 			playerHUD.set_name("HUD")
-			get_parent().add_child(playerHUD)
+			add_child(playerHUD)
 			#print(playerHUD)
 			pass
 			
-		if get_parent().has_node("HUD"):
-			get_parent().get_node("HUD").get_node("BarLife").value = life_bar
+		if has_node("HUD"):
+			get_node("HUD").get_node("BarLife").value = life_bar
+			pass
+			
+		# bomb instance
+		if Input.is_action_just_released("player_bomb") :
+			var bombScene = bomb.instance()
+			bombScene.position = position
+			get_parent().add_child(bombScene)
+			pass
+		#dash
+		if Input.is_action_just_released("player_dash") :
+			if dashCountdown == 0 or dashCountdown <1:
+				bustDash = 1500
+				dashCountdown = 5
+				pass
+			else:
+				
+				pass
+			pass
+		else:
+			if(dashCountdown>1):
+				dashCountdown -= 1 * delta
+				if has_node("HUD"):
+					var cdLabel = get_node("HUD").get_node("Node2D").get_node("Dash").get_node("cd")
+					cdLabel.text = str(floor(dashCountdown))
+			bustDash = 0
+		#hold/interact
+		if Input.is_action_just_released("player_hold") :
+			
 			pass
 		control_process()
 		move_process()
@@ -91,13 +127,7 @@ func _physics_process(delta):
 			get_node("AnimatedSprite").play("idle")
 			pass
 		"""	
-		# bomb instance
-		if Input.is_action_just_released("player_atack") :
-			var bombScene = bomb.instance()
-			bombScene.position = position
-			get_parent().add_child(bombScene)
-			pass
-			
+		
 		# if is die
 		if !invencible and life_bar < 0:
 			pass
@@ -173,6 +203,7 @@ func control_process():
 		
 	pass
 func move_process():
-	var motion = movedir.normalized() * SPEED
-	move_and_slide(motion, Vector2(0,0))
+	if (varlueAnalog.x==0 and varlueAnalog.y ==0):
+		var motion = movedir.normalized() * (SPEED+bustDash)
+		move_and_slide(motion, Vector2(0,0))
 	pass

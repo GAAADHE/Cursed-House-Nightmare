@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://Node2D.gd" type="Script" id=1]
-[ext_resource path="res://assets/bomb/bomb.1.png" type="Texture" id=2]
+[ext_resource path="res://HUDTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Node2D.gd" type="Script" id=2]
+[ext_resource path="res://analog.png" type="Texture" id=3]
+[ext_resource path="res://AnalogBig.gd" type="Script" id=4]
+[ext_resource path="res://bottons.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 20 )
@@ -15,8 +18,21 @@ extents = Vector2( 20, 20 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 20, 20 )
 
-[sub_resource type="CircleShape2D" id=5]
-radius = 20.0
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 24.0
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 24.0
+
+[sub_resource type="CircleShape2D" id=9]
+radius = 24.0
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -25,6 +41,7 @@ margin_left = 5.26318
 margin_top = 5.26317
 margin_right = 135.263
 margin_bottom = 19.2632
+theme = ExtResource( 1 )
 max_value = 1000.0
 
 [node name="Points" type="Label" parent="."]
@@ -39,35 +56,83 @@ text = "0
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2( 59, 223 )
 z_index = 20
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="down" type="TouchScreenButton" parent="Node2D"]
+position = Vector2( -139, 193 )
 z_index = 20
 shape = SubResource( 1 )
 action = "player_down"
 
 [node name="up" type="TouchScreenButton" parent="Node2D"]
-position = Vector2( 1, -80 )
+position = Vector2( -138, 113 )
 z_index = 20
 shape = SubResource( 2 )
 action = "player_up"
 
 [node name="left" type="TouchScreenButton" parent="Node2D"]
-position = Vector2( -40, -40 )
+position = Vector2( -179, 153 )
 z_index = 20
 shape = SubResource( 3 )
 action = "player_left"
 
 [node name="right" type="TouchScreenButton" parent="Node2D"]
-position = Vector2( 43, -41 )
+position = Vector2( -96, 152 )
 z_index = 20
 shape = SubResource( 4 )
 action = "player_right"
 
-[node name="bomb" type="TouchScreenButton" parent="Node2D"]
-position = Vector2( 228, -90 )
-scale = Vector2( 3.375, 3.0625 )
-z_index = 20
-normal = ExtResource( 2 )
-shape = SubResource( 5 )
-action = "player_atack"
+[node name="AnalogButton" type="Sprite" parent="Node2D"]
+editor/display_folded = true
+position = Vector2( -17, -64 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 80, 80 )
+
+[node name="AnalogBig" type="TouchScreenButton" parent="Node2D/AnalogButton"]
+position = Vector2( -15.7924, -15.0755 )
+normal = SubResource( 5 )
+shape = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Dash" type="TouchScreenButton" parent="Node2D"]
+position = Vector2( 169.825, -5.76353 )
+shape = SubResource( 7 )
+action = "player_dash"
+
+[node name="Sprite" type="Sprite" parent="Node2D/Dash"]
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="cd" type="Label" parent="Node2D/Dash"]
+margin_left = -22.0
+margin_top = -31.0
+margin_right = 4.0
+theme = ExtResource( 1 )
+text = "0
+"
+
+[node name="Hold" type="TouchScreenButton" parent="Node2D"]
+editor/display_folded = true
+position = Vector2( 197.758, -57.4406 )
+shape = SubResource( 8 )
+action = "player_hold"
+
+[node name="Sprite" type="Sprite" parent="Node2D/Hold"]
+position = Vector2( -7.62939e-005, 0 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 64, 0, 32, 32 )
+
+[node name="Bomb" type="TouchScreenButton" parent="Node2D"]
+editor/display_folded = true
+position = Vector2( 248.039, -90.9609 )
+shape = SubResource( 9 )
+action = "player_bomb"
+
+[node name="Sprite" type="Sprite" parent="Node2D/Bomb"]
+position = Vector2( 0.698395, 0.698326 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 32, 32 )

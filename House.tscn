@@ -80,31 +80,21 @@ tile_data = PoolIntArray( 1900562, 0, 655371, 1900563, 0, 655372, 1900564, 0, 65
 
 [node name="EntraceToHall" parent="Entrace/Entrace" instance=ExtResource( 3 )]
 position = Vector2( 336, 480 )
-portal_destiny = Vector2( 248, 216 )
-
-[node name="Position2D" parent="Entrace/Entrace/EntraceToHall" index="0"]
-position = Vector2( -88, -258 )
+portID = "EntraceToHall"
+portDestineID = "HallToEntrace"
 
 [node name="Entrace2" parent="Entrace/Entrace" instance=ExtResource( 3 )]
 editor/display_folded = true
 position = Vector2( 352, 608 )
 rotation = -3.14159
-portal_destiny = Vector2( 352, 592 )
+portID = "EntracetToGarden"
+portDestineID = "FrontGardenToEntrace"
 
-[node name="Position2D" parent="Entrace/Entrace/Entrace2" index="0"]
-position = Vector2( 8.00012, 37 )
-
-[node name="EntraceToLivingRoom" parent="Entrace/Entrace" instance=ExtResource( 3 )]
-editor/display_folded = true
+[node name="EntraceToLiving" parent="Entrace/Entrace" instance=ExtResource( 3 )]
 position = Vector2( 384, 528 )
 rotation = 1.57079
-portal_destiny = Vector2( 537, 536 )
-
-[node name="Position2D" parent="Entrace/Entrace/EntraceToLivingRoom" index="0"]
-position = Vector2( 8.00092, -146 )
-
-[node name="Door" parent="Entrace/Entrace/EntraceToLivingRoom" index="1"]
-editor/display_folded = true
+portID = "EntraceToLivingRoom"
+portDestineID = "LivingToEntrace"
 
 [node name="Fog" parent="Entrace" instance=ExtResource( 4 )]
 
@@ -112,7 +102,6 @@ editor/display_folded = true
 editor/display_folded = true
 
 [node name="Area2D" type="Area2D" parent="Living Room"]
-editor/display_folded = true
 position = Vector2( 600, 533 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Living Room/Area2D"]
@@ -146,20 +135,21 @@ tile_data = PoolIntArray( 1900575, 0, 655371, 1900576, 0, 655372, 1900577, 0, 65
 editor/display_folded = true
 
 [node name="LivingToDiningRoom" parent="Living Room/Living Room" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 624, 480 )
-portal_destiny = Vector2( 648, 360 )
+portID = "LivingToDiningRoom"
+portDestineID = "DinningRoomToLiving"
 
-[node name="Position2D" parent="Living Room/Living Room/LivingToDiningRoom" index="0"]
-position = Vector2( 24, -114 )
-
-[node name="EntraceToRoom" parent="Living Room/Living Room" instance=ExtResource( 3 )]
+[node name="LivingToEntrace" parent="Living Room/Living Room" instance=ExtResource( 3 )]
 position = Vector2( 512, 544 )
 rotation = -1.5708
-portal_destiny = Vector2( 375, 538 )
+portID = "LivingToEntrace"
+portDestineID = "EntraceToLivingRoom"
 
-[node name="Position2D" parent="Living Room/Living Room/EntraceToRoom" index="0"]
-position = Vector2( 9.00049, -147 )
+[node name="LivingToEntrace2" parent="Living Room/Living Room" instance=ExtResource( 3 )]
+position = Vector2( 512, 544 )
+rotation = -1.5708
+portID = "LivingToEntrace"
+portDestineID = "EntraceToLivingRoom"
 
 [node name="Fog" parent="Living Room" instance=ExtResource( 4 )]
 
@@ -167,7 +157,6 @@ position = Vector2( 9.00049, -147 )
 editor/display_folded = true
 
 [node name="Area2D" type="Area2D" parent="Dinning room"]
-editor/display_folded = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Dinning room/Area2D"]
 polygon = PoolVector2Array( 574, 205, 759, 205, 759, 410, 573, 410, 573, 410 )
@@ -198,26 +187,18 @@ tile_data = PoolIntArray( 852004, 0, 655371, 852005, 0, 655372, 852006, 0, 65537
 [node name="Dinning Room" type="Node2D" parent="Dinning room"]
 
 [node name="DinningRoomToKitchen" parent="Dinning room/Dinning Room" instance=ExtResource( 3 )]
+editor/display_folded = true
 position = Vector2( 592, 272 )
 rotation = -1.5708
-portal_destiny = Vector2( 503, 137 )
+portID = "DinningRoomToKitchen"
+portDestineID = "kitchenToDinningRoom"
 
-[node name="Position2D" parent="Dinning room/Dinning Room/DinningRoomToKitchen" index="0"]
-position = Vector2( 136, -81.9995 )
-
-[node name="Door" parent="Dinning room/Dinning Room/DinningRoomToKitchen" index="1"]
+[node name="DinningRoomToLiving" parent="Dinning room/Dinning Room" instance=ExtResource( 3 )]
 editor/display_folded = true
-
-[node name="DinningRoomToLivingRoom" parent="Dinning room/Dinning Room" instance=ExtResource( 3 )]
 position = Vector2( 656, 384 )
 rotation = -3.14159
-portal_destiny = Vector2( 633, 504 )
-
-[node name="Position2D" parent="Dinning room/Dinning Room/DinningRoomToLivingRoom" index="0"]
-position = Vector2( 22.9997, -117 )
-
-[node name="Door" parent="Dinning room/Dinning Room/DinningRoomToLivingRoom" index="1"]
-editor/display_folded = true
+portID = "DinningRoomToLiving"
+portDestineID = "LivingToDiningRoom"
 
 [node name="Fog" parent="Dinning room" instance=ExtResource( 4 )]
 
@@ -256,15 +237,11 @@ tile_data = PoolIntArray( -131036, 0, 655371, -131035, 0, 655372, -131034, 0, 65
 [node name="Laundry" type="Node2D" parent="Laundry"]
 
 [node name="laundryToKitchen" parent="Laundry/Laundry" instance=ExtResource( 3 )]
-position = Vector2( 609, 162 )
+editor/display_folded = true
+position = Vector2( 592, 48 )
 rotation = -1.5708
-portal_destiny = Vector2( 503, 40 )
-
-[node name="Position2D" parent="Laundry/Laundry/laundryToKitchen" index="0"]
-position = Vector2( 122, -98.9996 )
-
-[node name="Door" parent="Laundry/Laundry/laundryToKitchen" index="1"]
-position = Vector2( 114, -17 )
+portID = "laundryToKitchen"
+portDestineID = "kitchenToLaundry"
 
 [node name="Fog" parent="Laundry" instance=ExtResource( 4 )]
 
@@ -272,7 +249,6 @@ position = Vector2( 114, -17 )
 editor/display_folded = true
 
 [node name="Area2D" type="Area2D" parent="Kitchen"]
-editor/display_folded = true
 position = Vector2( 80, -10 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Kitchen/Area2D"]
@@ -302,37 +278,24 @@ format = 1
 tile_data = PoolIntArray( -131049, 0, 655371, -131048, 0, 655372, -131047, 0, 655373, -131046, 0, 655373, -131045, 0, 655373, -131044, 0, 655373, -131043, 0, 655373, -131042, 0, 655373, -131041, 0, 655373, -131040, 0, 655372, -131039, 0, 655375, -65513, 0, 720907, -65512, 0, 720908, -65511, 0, 720909, -65510, 0, 720909, -65509, 0, 720909, -65508, 0, 720909, -65507, 0, 720909, -65506, 0, 720909, -65505, 0, 720909, -65504, 0, 720910, -65503, 0, 786447, 23, 0, 786443, 24, 0, 786444, 32, 0, 786446, 33, 0, 786447, 65559, 0, 786443, 65560, 0, 786444, 65568, 0, 786446, 65569, 0, 786447, 131095, 0, 786443, 131096, 0, 786444, 131105, 0, 786447, 196631, 0, 786443, 196632, 0, 786444, 196640, 0, 1114124, 196641, 0, 786447, 262167, 0, 786443, 262168, 0, 786444, 262176, 0, 786446, 262177, 0, 786447, 327703, 0, 786443, 327704, 0, 786444, 327712, 0, 786446, 327713, 0, 786447, 393239, 0, 786443, 393240, 0, 786444, 393248, 0, 786446, 393249, 0, 786447, 458775, 0, 786443, 458776, 0, 786444, 458784, 0, 786446, 458785, 0, 786447, 524311, 0, 786443, 524312, 0, 786444, 524321, 0, 786447, 589847, 0, 786443, 589848, 0, 786444, 589856, 0, 1114124, 589857, 0, 786447, 655383, 0, 786443, 655384, 0, 786444, 655392, 0, 786446, 655393, 0, 786447, 720919, 0, 786443, 720920, 0, 786444, 720928, 0, 786446, 720929, 0, 786447, 786455, 0, 786443, 786456, 0, 786444, 786464, 0, 786446, 786465, 0, 786447, 851991, 0, 786443, 851992, 0, 786444, 852000, 0, 786446, 852001, 0, 786447, 917527, 0, 720907, 917528, 0, 851980, 917529, 0, 851981, 917530, 0, 851981, 917531, 0, 1179659, 917533, 0, 1179659, 917534, 0, 851981, 917535, 0, 851981, 917536, 0, 851982, 917537, 0, 786447, 983063, 0, 917515, 983064, 0, 917516, 983065, 0, 917516, 983066, 0, 917516, 983067, 0, 917516, 983068, 0, 917516, 983069, 0, 917516, 983070, 0, 917516, 983071, 0, 917516, 983072, 0, 917516, 983073, 0, 917519 )
 
 [node name="Kitchen" type="Node2D" parent="Kitchen"]
-editor/display_folded = true
 
 [node name="kitchenToHall" parent="Kitchen/Kitchen" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 464, 240 )
 rotation = -3.14159
-portal_destiny = Vector2( 248, 168 )
-
-[node name="Position2D" parent="Kitchen/Kitchen/kitchenToHall" index="0"]
-position = Vector2( 216, 76.9994 )
-
-[node name="Door" parent="Kitchen/Kitchen/kitchenToHall" index="1"]
-editor/display_folded = true
+portID = "kitchenToHall"
+portDestineID = "HallToKitchen"
 
 [node name="kitchenToLaundry" parent="Kitchen/Kitchen" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 528, 32 )
 rotation = 1.5708
-portal_destiny = Vector2( 616, 40 )
-
-[node name="Position2D" parent="Kitchen/Kitchen/kitchenToLaundry" index="0"]
-position = Vector2( 6.99973, -82 )
+portID = "kitchenToLaundry"
+portDestineID = "laundryToKitchen"
 
 [node name="kitchenToDinningRoom" parent="Kitchen/Kitchen" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 528, 128 )
 rotation = 1.5708
-portal_destiny = Vector2( 617, 263 )
-
-[node name="Position2D" parent="Kitchen/Kitchen/kitchenToDinningRoom" index="0"]
-position = Vector2( 135, -82.0005 )
+portID = "kitchenToDinningRoom"
+portDestineID = "DinningRoomToKitchen"
 
 [node name="Fog" parent="Kitchen" instance=ExtResource( 4 )]
 
@@ -340,7 +303,6 @@ position = Vector2( 135, -82.0005 )
 editor/display_folded = true
 
 [node name="Area2D" type="Area2D" parent="Hall"]
-editor/display_folded = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hall/Area2D"]
 polygon = PoolVector2Array( 155, 123, 244, 120, 340, 126, 340, 259, 155, 259 )
@@ -370,31 +332,25 @@ tile_data = PoolIntArray( 524298, 0, 655371, 524299, 0, 655372, 524300, 0, 65537
 
 [node name="Hall" type="Node2D" parent="Hall"]
 
-[node name="EntraceToKitchen" parent="Hall/Hall" instance=ExtResource( 3 )]
+[node name="HallToKitchen" parent="Hall/Hall" instance=ExtResource( 3 )]
 editor/display_folded = true
 position = Vector2( 240, 144 )
-portal_destiny = Vector2( 456, 216 )
+portID = "HallToKitchen"
+portDestineID = "kitchenToHall"
 
-[node name="Position2D" parent="Hall/Hall/EntraceToKitchen" index="0"]
-position = Vector2( 216, 80 )
-
-[node name="EntraceToHall" parent="Hall/Hall" instance=ExtResource( 3 )]
+[node name="HallToEntrace" parent="Hall/Hall" instance=ExtResource( 3 )]
 editor/display_folded = true
 position = Vector2( 256, 240 )
 rotation = -3.14159
-portal_destiny = Vector2( 345, 502 )
+portID = "HallToEntrace"
+portDestineID = "EntraceToHall"
 
-[node name="Position2D" parent="Hall/Hall/EntraceToHall" index="0"]
-position = Vector2( -88.0007, -258 )
-
-[node name="EntraceToRow" parent="Hall/Hall" instance=ExtResource( 3 )]
+[node name="HallToRow" parent="Hall/Hall" instance=ExtResource( 3 )]
 editor/display_folded = true
 position = Vector2( 176, 192 )
 rotation = -1.5708
-portal_destiny = Vector2( 136, 328 )
-
-[node name="Position2D" parent="Hall/Hall/EntraceToRow" index="0"]
-position = Vector2( -136, -34.0005 )
+portID = "HallToRow"
+portDestineID = "rowToHall"
 
 [node name="Fog" parent="Hall" instance=ExtResource( 4 )]
 
@@ -405,7 +361,7 @@ editor/display_folded = true
 position = Vector2( 50, 327 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Row/Area2D"]
-position = Vector2( -51, -325 )
+position = Vector2( -51, -325.735 )
 polygon = PoolVector2Array( -54, 266, 61, 258, 183, 267, 180, 407, -54, 407 )
 
 [node name="coliders" type="TileMap" parent="Row"]
@@ -432,41 +388,28 @@ format = 1
 tile_data = PoolIntArray( 1179645, 0, 655371, 1179646, 0, 655372, 1179647, 0, 655373, 1114112, 0, 655373, 1114113, 0, 655373, 1114114, 0, 655373, 1114115, 0, 655373, 1114116, 0, 655373, 1114117, 0, 655373, 1114118, 0, 655373, 1114119, 0, 655373, 1114120, 0, 655373, 1114121, 0, 655374, 1114122, 0, 655375, 1245181, 0, 720907, 1245182, 0, 720908, 1245183, 0, 720909, 1179648, 0, 720909, 1179650, 0, 1376267, 1179651, 0, 720909, 1179652, 0, 720909, 1179653, 0, 720909, 1179655, 0, 720909, 1179656, 0, 720909, 1179657, 0, 720910, 1179658, 0, 720911, 1310717, 0, 786443, 1310718, 0, 786444, 1245193, 0, 786446, 1245194, 0, 720911, 1376253, 0, 786443, 1376254, 0, 786444, 1310730, 0, 720911, 1441789, 0, 786443, 1441790, 0, 786444, 1376265, 0, 1114124, 1376266, 0, 720911, 1507325, 0, 786443, 1507326, 0, 786444, 1441801, 0, 786446, 1441802, 0, 720911, 1572861, 0, 851979, 1572862, 0, 851980, 1572863, 0, 851981, 1507328, 0, 851981, 1507330, 0, 1179659, 1507331, 0, 851981, 1507332, 0, 851981, 1507333, 0, 851981, 1507334, 0, 851981, 1507335, 0, 851981, 1507336, 0, 851981, 1507337, 0, 851982, 1507338, 0, 720911, 1638397, 0, 917515, 1638398, 0, 917517, 1638399, 0, 917517, 1572864, 0, 917517, 1572865, 0, 917517, 1572866, 0, 917517, 1572867, 0, 917517, 1572868, 0, 917517, 1572869, 0, 917517, 1572870, 0, 917517, 1572871, 0, 917517, 1572872, 0, 917517, 1572873, 0, 917517, 1572874, 0, 917519 )
 
 [node name="Row" type="Node2D" parent="Row"]
-editor/display_folded = true
 
 [node name="rowToPlayerRoom" parent="Row/Row" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 16, 288 )
-portal_destiny = Vector2( 24, 152 )
-
-[node name="Position2D" parent="Row/Row/rowToPlayerRoom" index="0"]
-position = Vector2( 8, -131 )
+portID = "rowToPlayerRoom"
+portDestineID = "pRoomToRow"
 
 [node name="rowToHall" parent="Row/Row" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 160, 320 )
 rotation = 1.57079
-portal_destiny = Vector2( 216, 200 )
-
-[node name="Position2D" parent="Row/Row/rowToHall" index="0"]
-position = Vector2( -135, -34.0008 )
+portID = "rowToHall"
+portDestineID = "HallToRow"
 
 [node name="rowToBathdroom" parent="Row/Row" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 96, 288 )
-portal_destiny = Vector2( 96, 304 )
-
-[node name="Position2D" parent="Row/Row/rowToBathdroom" index="0"]
-visible = false
-position = Vector2( -25, 26 )
+portID = "rowToBathdroom"
+portDestineID = "bathdroomToRow"
 
 [node name="rowToParentsRoom" parent="Row/Row" instance=ExtResource( 3 )]
 position = Vector2( 32, 384 )
 rotation = -3.14159
-portal_destiny = Vector2( 24, 488 )
-
-[node name="Position2D" parent="Row/Row/rowToParentsRoom" index="0"]
-position = Vector2( 7.99975, -98 )
+portID = "rowToParentsRoom"
+portDestineID = "parentsRoomToRow"
 
 [node name="Fog" parent="Row" instance=ExtResource( 4 )]
 
@@ -505,16 +448,12 @@ format = 1
 tile_data = PoolIntArray( -65539, 0, 655371, -65538, 0, 655372, -65537, 0, 655373, -131072, 0, 655373, -131071, 0, 655373, -131070, 0, 655373, -131069, 0, 655373, -131068, 0, 655373, -131067, 0, 655373, -131066, 0, 655373, -131065, 0, 655373, -131064, 0, 655373, -131063, 0, 655373, -131062, 0, 655374, -131061, 0, 655375, -3, 0, 720907, -2, 0, 720908, -1, 0, 720909, -65536, 0, 720909, -65535, 0, 720909, -65534, 0, 720909, -65533, 0, 720909, -65532, 0, 720909, -65531, 0, 720909, -65530, 0, 720909, -65529, 0, 720909, -65528, 0, 720909, -65527, 0, 720909, -65526, 0, 720910, -65525, 0, 720911, 65533, 0, 786443, 65534, 0, 786444, 10, 0, 786446, 11, 0, 720911, 131069, 0, 786443, 131070, 0, 786444, 65546, 0, 786446, 65547, 0, 720911, 196605, 0, 786443, 196606, 0, 786444, 131082, 0, 786446, 131083, 0, 720911, 262141, 0, 786443, 262142, 0, 786444, 196618, 0, 786446, 196619, 0, 720911, 327677, 0, 786443, 327678, 0, 786444, 262154, 0, 786446, 262155, 0, 720911, 393213, 0, 786443, 393214, 0, 786444, 327685, 0, 1048588, 327686, 0, 851981, 327687, 0, 851981, 327688, 0, 851981, 327689, 0, 851981, 327690, 0, 851982, 327691, 0, 720911, 458749, 0, 786443, 458750, 0, 786444, 393221, 0, 786446, 393222, 0, 1245195, 393223, 0, 917518, 393224, 0, 917518, 393225, 0, 917518, 393226, 0, 917518, 393227, 0, 917519, 524285, 0, 786443, 524286, 0, 786444, 458757, 0, 786446, 458758, 0, 720911, 589821, 0, 786443, 589822, 0, 786444, 524293, 0, 786446, 524294, 0, 720911, 655357, 0, 786443, 655358, 0, 786444, 589829, 0, 786446, 589830, 0, 720911, 720893, 0, 786443, 720894, 0, 851980, 720895, 0, 851981, 655360, 0, 851981, 655362, 0, 1179659, 655363, 0, 851981, 655364, 0, 851981, 655365, 0, 851982, 655366, 0, 786447, 786429, 0, 917515, 786430, 0, 917516, 786431, 0, 917516, 720896, 0, 917516, 720897, 0, 917516, 720898, 0, 917516, 720899, 0, 917516, 720900, 0, 917516, 720901, 0, 917516, 720902, 0, 917519 )
 
 [node name="Players Bedroom" type="Node2D" parent="Players room"]
-editor/display_folded = true
 
 [node name="pRoomToRow" parent="Players room/Players Bedroom" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 32, 176 )
 rotation = -3.14159
-portal_destiny = Vector2( 23, 311 )
-
-[node name="Position2D" parent="Players room/Players Bedroom/pRoomToRow" index="0"]
-position = Vector2( 7.99967, -130 )
+portID = "pRoomToRow"
+portDestineID = "rowToPlayerRoom"
 
 [node name="Fog" parent="Players room" instance=ExtResource( 4 )]
 
@@ -554,12 +493,11 @@ tile_data = PoolIntArray( 1900541, 0, 655371, 1900542, 0, 655372, 1900543, 0, 65
 
 [node name="Parents Bedroom" type="Node2D" parent="Parents Room"]
 
-[node name="pRoomToRow" parent="Parents Room/Parents Bedroom" instance=ExtResource( 3 )]
+[node name="parentsRoomToRow" parent="Parents Room/Parents Bedroom" instance=ExtResource( 3 )]
+editor/display_folded = true
 position = Vector2( 16, 464 )
-portal_destiny = Vector2( 24, 361 )
-
-[node name="Position2D" parent="Parents Room/Parents Bedroom/pRoomToRow" index="0"]
-position = Vector2( 8, -98 )
+portID = "parentsRoomToRow"
+portDestineID = "rowToParentsRoom"
 
 [node name="Fog" parent="Parents Room" instance=ExtResource( 4 )]
 
@@ -567,43 +505,3 @@ position = Vector2( 8, -98 )
 tile_set = SubResource( 3 )
 cell_size = Vector2( 16, 16 )
 format = 1
-
-[editable path="Entrace/Entrace/EntraceToHall"]
-
-[editable path="Entrace/Entrace/Entrace2"]
-
-[editable path="Entrace/Entrace/EntraceToLivingRoom"]
-
-[editable path="Living Room/Living Room/LivingToDiningRoom"]
-
-[editable path="Living Room/Living Room/EntraceToRoom"]
-
-[editable path="Dinning room/Dinning Room/DinningRoomToKitchen"]
-
-[editable path="Dinning room/Dinning Room/DinningRoomToLivingRoom"]
-
-[editable path="Laundry/Laundry/laundryToKitchen"]
-
-[editable path="Kitchen/Kitchen/kitchenToHall"]
-
-[editable path="Kitchen/Kitchen/kitchenToLaundry"]
-
-[editable path="Kitchen/Kitchen/kitchenToDinningRoom"]
-
-[editable path="Hall/Hall/EntraceToKitchen"]
-
-[editable path="Hall/Hall/EntraceToHall"]
-
-[editable path="Hall/Hall/EntraceToRow"]
-
-[editable path="Row/Row/rowToPlayerRoom"]
-
-[editable path="Row/Row/rowToHall"]
-
-[editable path="Row/Row/rowToBathdroom"]
-
-[editable path="Row/Row/rowToParentsRoom"]
-
-[editable path="Players room/Players Bedroom/pRoomToRow"]
-
-[editable path="Parents Room/Parents Bedroom/pRoomToRow"]

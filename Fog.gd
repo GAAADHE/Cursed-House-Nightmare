@@ -5,7 +5,7 @@ extends Node2D
 # var b = "text"
 var area2DDetector
 var enableFog = false
-var state = false
+#var state = false
 var nodeParentMap
 # Called when the node enters the scene tree for the first time.
 func _ready():

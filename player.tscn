@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
 [ext_resource path="res://assets/player/avatar1.png" type="Texture" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://assets/player/avatar12.png" type="Texture" id=21]
 [ext_resource path="res://assets/player/avatar13.png" type="Texture" id=22]
 [ext_resource path="res://assets/player/avatar14.png" type="Texture" id=23]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=24]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -77,3 +78,5 @@ smoothing_enabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2 )
 shape = SubResource( 2 )
+
+[node name="HUD" parent="." instance=ExtResource( 24 )]
