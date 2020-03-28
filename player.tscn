@@ -1,72 +1,112 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
-[ext_resource path="res://assets/player/avatar1.png" type="Texture" id=2]
-[ext_resource path="res://assets/player/avatar2.png" type="Texture" id=3]
-[ext_resource path="res://assets/player/avatar3.png" type="Texture" id=4]
-[ext_resource path="res://assets/player/avatar4.png" type="Texture" id=5]
-[ext_resource path="res://assets/player/avatar5.png" type="Texture" id=6]
-[ext_resource path="res://assets/player/avatar6.png" type="Texture" id=7]
-[ext_resource path="res://assets/player/avatar19.png" type="Texture" id=8]
-[ext_resource path="res://assets/player/avatar20.png" type="Texture" id=9]
-[ext_resource path="res://assets/player/avatar21.png" type="Texture" id=10]
-[ext_resource path="res://assets/player/avatar22.png" type="Texture" id=11]
-[ext_resource path="res://assets/player/avatar15.png" type="Texture" id=12]
-[ext_resource path="res://assets/player/avatar16.png" type="Texture" id=13]
-[ext_resource path="res://assets/player/avatar17.png" type="Texture" id=14]
-[ext_resource path="res://assets/player/avatar18.png" type="Texture" id=15]
-[ext_resource path="res://assets/player/avatar7.png" type="Texture" id=16]
-[ext_resource path="res://assets/player/avatar8.png" type="Texture" id=17]
-[ext_resource path="res://assets/player/avatar9.png" type="Texture" id=18]
-[ext_resource path="res://assets/player/avatar10.png" type="Texture" id=19]
-[ext_resource path="res://assets/player/avatar11.png" type="Texture" id=20]
-[ext_resource path="res://assets/player/avatar12.png" type="Texture" id=21]
-[ext_resource path="res://assets/player/avatar13.png" type="Texture" id=22]
-[ext_resource path="res://assets/player/avatar14.png" type="Texture" id=23]
-[ext_resource path="res://HUD.tscn" type="PackedScene" id=24]
+[ext_resource path="res://assets/player/avatar19.png" type="Texture" id=2]
+[ext_resource path="res://assets/player/avatar20.png" type="Texture" id=3]
+[ext_resource path="res://assets/player/avatar21.png" type="Texture" id=4]
+[ext_resource path="res://assets/player/avatar22.png" type="Texture" id=5]
+[ext_resource path="res://assets/player/avatar15.png" type="Texture" id=6]
+[ext_resource path="res://assets/player/avatar16.png" type="Texture" id=7]
+[ext_resource path="res://assets/player/avatar17.png" type="Texture" id=8]
+[ext_resource path="res://assets/player/avatar18.png" type="Texture" id=9]
+[ext_resource path="res://assets/player/avatar7.png" type="Texture" id=10]
+[ext_resource path="res://assets/player/avatar8.png" type="Texture" id=11]
+[ext_resource path="res://assets/player/avatar9.png" type="Texture" id=12]
+[ext_resource path="res://assets/player/avatar10.png" type="Texture" id=13]
+[ext_resource path="res://assets/player/avatar23.png" type="Texture" id=14]
+[ext_resource path="res://assets/player/avatar24.png" type="Texture" id=15]
+[ext_resource path="res://assets/player/avatar25.png" type="Texture" id=16]
+[ext_resource path="res://assets/player/avatar26.png" type="Texture" id=17]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=18]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/avatar1.png-643290637171788230e1d3f89163a437.stex"
+
+[sub_resource type="StreamTexture" id=2]
+load_path = "res://.import/avatar2.png-a1751f15b7693b81f19dd42309910286.stex"
+
+[sub_resource type="StreamTexture" id=3]
+load_path = "res://.import/avatar3.png-11edde09cbe243af2070f617be5af7c1.stex"
+
+[sub_resource type="StreamTexture" id=4]
+load_path = "res://.import/avatar4.png-888dcf61e932a6b28ca63baef4fbe785.stex"
+
+[sub_resource type="StreamTexture" id=5]
+load_path = "res://.import/avatar5.png-4527a7b30dc6729412bd5b2b19320839.stex"
+
+[sub_resource type="StreamTexture" id=6]
+load_path = "res://.import/avatar6.png-d6a0fd887eec3260c585bd96d49de8d9.stex"
+
+[sub_resource type="StreamTexture" id=7]
+load_path = "res://.import/avatar11.png-c26773961b3125cd05623d1e29c6b2de.stex"
+
+[sub_resource type="StreamTexture" id=8]
+load_path = "res://.import/avatar12.png-dc24e8ec805c9933a295cf691e4455a1.stex"
+
+[sub_resource type="StreamTexture" id=9]
+load_path = "res://.import/avatar13.png-cce1e2980afaff591178244165a6c731.stex"
+
+[sub_resource type="StreamTexture" id=10]
+load_path = "res://.import/avatar14.png-aef67eaaaf78b9455b26bd7bea02bdcf.stex"
+
+[sub_resource type="StreamTexture" id=11]
+load_path = "res://.import/avatar10.png-007aa87409ff546d980d20aea918bea3.stex"
+
+[sub_resource type="StreamTexture" id=12]
+load_path = "res://.import/avatar9.png-3dbbdbdf89fe7521da72c89b347cdcc4.stex"
+
+[sub_resource type="SpriteFrames" id=13]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "idle",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
-"name": "walkleft",
-"speed": 10.0
+"name": "Walkupdiag",
+"speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "walkright",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "walkleft",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "walkdown",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "Walkdowndiag",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
 "loop": true,
 "name": "walkup",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 5 ), ExtResource( 18 ) ],
+"frames": [ SubResource( 11 ), SubResource( 4 ), SubResource( 12 ) ],
 "loop": true,
 "name": "onAir",
 "speed": 30.0
 } ]
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 5.0
+[sub_resource type="ConvexPolygonShape2D" id=14]
+points = PoolVector2Array( 0, -3, 4, -1, 4, 4, 0, 5, -4, 4, -4, -1 )
 
 [node name="player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 SPEED = 70
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
+frames = SubResource( 13 )
 animation = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -77,6 +117,6 @@ smoothing_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2 )
-shape = SubResource( 2 )
+shape = SubResource( 14 )
 
-[node name="HUD" parent="." instance=ExtResource( 24 )]
+[node name="HUD" parent="." instance=ExtResource( 18 )]

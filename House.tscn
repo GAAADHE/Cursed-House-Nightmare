@@ -1,13 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/collision_tiles/square-green-16x16.tres" type="TileSet" id=1]
-[ext_resource path="res://atlas.png" type="Texture" id=2]
-[ext_resource path="res://assets/Porta.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Fog.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Background-sparkle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/collision_tiles/square-green-16x16.tres" type="TileSet" id=2]
+[ext_resource path="res://atlas.png" type="Texture" id=3]
+[ext_resource path="res://assets/Porta.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Fog.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/furniture/Closet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/invocation.tscn" type="PackedScene" id=7]
 
 [sub_resource type="TileSet" id=1]
 0/name = "atlas.png 0"
-0/texture = ExtResource( 2 )
+0/texture = ExtResource( 3 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 512, 384 )
@@ -26,36 +29,31 @@
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 132, 90 )
 
-[sub_resource type="TileSet" id=3]
-0/name = "Total"
-0/texture = ExtResource( 2 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 928, 480 )
-0/tile_mode = 2
-0/autotile/icon_coordinate = Vector2( 0, 0 )
-0/autotile/tile_size = Vector2( 16, 16 )
-0/autotile/spacing = 0
-0/autotile/occluder_map = [  ]
-0/autotile/navpoly_map = [  ]
-0/autotile/z_index_map = [  ]
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shapes = [  ]
-0/z_index = 0
-
 [node name="House" type="Node2D"]
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+editor/display_folded = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="AnimatedSprite" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource( 1 )]
+visible = false
+position = Vector2( 363, 308 )
+widthbg = 1500
+heightbg = 1500
+
 [node name="Entrace" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Area2D" type="Area2D" parent="Entrace"]
+editor/display_folded = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Entrace/Area2D"]
 polygon = PoolVector2Array( 281, 456, 415, 457, 405, 646, 281, 638 )
 
 [node name="coliders" type="TileMap" parent="Entrace"]
 modulate = Color( 0.117647, 0.0627451, 0.0156863, 0.254902 )
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 collision_use_kinematic = true
 collision_bounce = 0.01
@@ -77,31 +75,32 @@ format = 1
 tile_data = PoolIntArray( 1900562, 0, 655371, 1900563, 0, 655372, 1900564, 0, 655372, 1900565, 0, 655373, 1900566, 0, 655373, 1900567, 0, 655373, 1900568, 0, 655375, 1966098, 0, 720907, 1966099, 0, 720908, 1966100, 0, 1376267, 1966102, 0, 1376267, 1966103, 0, 720910, 1966104, 0, 720911, 2031634, 0, 720907, 2031635, 0, 786444, 2031639, 0, 1114124, 2031640, 0, 720911, 2097170, 0, 720907, 2097171, 0, 786444, 2097175, 0, 1114124, 2097176, 0, 720911, 2162706, 0, 720907, 2162707, 0, 786444, 2162711, 0, 1114124, 2162712, 0, 720911, 2228242, 0, 720907, 2228243, 0, 786444, 2228247, 0, 1114124, 2228248, 0, 720911, 2293778, 0, 720907, 2293779, 0, 786444, 2293783, 0, 1114124, 2293784, 0, 720911, 2359314, 0, 720907, 2359315, 0, 786444, 2359319, 0, 1114124, 2359320, 0, 720911, 2424850, 0, 720907, 2424851, 0, 851980, 2424852, 0, 1179659, 2424854, 0, 1179659, 2424855, 0, 851982, 2424856, 0, 720911, 2490386, 0, 917515, 2490387, 0, 917516, 2490388, 0, 917516, 2490389, 0, 917516, 2490390, 0, 917516, 2490391, 0, 917516, 2490392, 0, 917519 )
 
 [node name="Entrace" type="Node2D" parent="Entrace"]
+editor/display_folded = true
 
-[node name="EntraceToHall" parent="Entrace/Entrace" instance=ExtResource( 3 )]
+[node name="EntraceToHall" parent="Entrace/Entrace" instance=ExtResource( 4 )]
 position = Vector2( 336, 480 )
 portID = "EntraceToHall"
 portDestineID = "HallToEntrace"
 
-[node name="Entrace2" parent="Entrace/Entrace" instance=ExtResource( 3 )]
-editor/display_folded = true
+[node name="Entrace2" parent="Entrace/Entrace" instance=ExtResource( 4 )]
 position = Vector2( 352, 608 )
 rotation = -3.14159
 portID = "EntracetToGarden"
 portDestineID = "FrontGardenToEntrace"
 
-[node name="EntraceToLiving" parent="Entrace/Entrace" instance=ExtResource( 3 )]
+[node name="EntraceToLiving" parent="Entrace/Entrace" instance=ExtResource( 4 )]
 position = Vector2( 384, 528 )
 rotation = 1.57079
 portID = "EntraceToLivingRoom"
 portDestineID = "LivingToEntrace"
 
-[node name="Fog" parent="Entrace" instance=ExtResource( 4 )]
+[node name="Fog" parent="Entrace" instance=ExtResource( 5 )]
 
 [node name="Living Room" type="Node2D" parent="."]
 editor/display_folded = true
 
 [node name="Area2D" type="Area2D" parent="Living Room"]
+editor/display_folded = true
 position = Vector2( 600, 533 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Living Room/Area2D"]
@@ -110,7 +109,7 @@ shape = SubResource( 2 )
 
 [node name="coliders" type="TileMap" parent="Living Room"]
 modulate = Color( 0.117647, 0.0627451, 0.0156863, 0.254902 )
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 collision_use_kinematic = true
 collision_bounce = 0.01
@@ -134,24 +133,24 @@ tile_data = PoolIntArray( 1900575, 0, 655371, 1900576, 0, 655372, 1900577, 0, 65
 [node name="Living Room" type="Node2D" parent="Living Room"]
 editor/display_folded = true
 
-[node name="LivingToDiningRoom" parent="Living Room/Living Room" instance=ExtResource( 3 )]
+[node name="LivingToDiningRoom" parent="Living Room/Living Room" instance=ExtResource( 4 )]
 position = Vector2( 624, 480 )
 portID = "LivingToDiningRoom"
 portDestineID = "DinningRoomToLiving"
 
-[node name="LivingToEntrace" parent="Living Room/Living Room" instance=ExtResource( 3 )]
+[node name="LivingToEntrace" parent="Living Room/Living Room" instance=ExtResource( 4 )]
 position = Vector2( 512, 544 )
 rotation = -1.5708
 portID = "LivingToEntrace"
 portDestineID = "EntraceToLivingRoom"
 
-[node name="LivingToEntrace2" parent="Living Room/Living Room" instance=ExtResource( 3 )]
+[node name="LivingToEntrace2" parent="Living Room/Living Room" instance=ExtResource( 4 )]
 position = Vector2( 512, 544 )
 rotation = -1.5708
 portID = "LivingToEntrace"
 portDestineID = "EntraceToLivingRoom"
 
-[node name="Fog" parent="Living Room" instance=ExtResource( 4 )]
+[node name="Fog" parent="Living Room" instance=ExtResource( 5 )]
 
 [node name="Dinning room" type="Node2D" parent="."]
 editor/display_folded = true
@@ -163,7 +162,7 @@ polygon = PoolVector2Array( 574, 205, 759, 205, 759, 410, 573, 410, 573, 410 )
 
 [node name="coliders" type="TileMap" parent="Dinning room"]
 modulate = Color( 0.117647, 0.0627451, 0.0156863, 0.254902 )
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 collision_use_kinematic = true
 collision_bounce = 0.01
@@ -186,34 +185,31 @@ tile_data = PoolIntArray( 852004, 0, 655371, 852005, 0, 655372, 852006, 0, 65537
 
 [node name="Dinning Room" type="Node2D" parent="Dinning room"]
 
-[node name="DinningRoomToKitchen" parent="Dinning room/Dinning Room" instance=ExtResource( 3 )]
-editor/display_folded = true
+[node name="DinningRoomToKitchen" parent="Dinning room/Dinning Room" instance=ExtResource( 4 )]
 position = Vector2( 592, 272 )
 rotation = -1.5708
 portID = "DinningRoomToKitchen"
 portDestineID = "kitchenToDinningRoom"
 
-[node name="DinningRoomToLiving" parent="Dinning room/Dinning Room" instance=ExtResource( 3 )]
-editor/display_folded = true
+[node name="DinningRoomToLiving" parent="Dinning room/Dinning Room" instance=ExtResource( 4 )]
 position = Vector2( 656, 384 )
 rotation = -3.14159
 portID = "DinningRoomToLiving"
 portDestineID = "LivingToDiningRoom"
 
-[node name="Fog" parent="Dinning room" instance=ExtResource( 4 )]
+[node name="Fog" parent="Dinning room" instance=ExtResource( 5 )]
 
 [node name="Laundry" type="Node2D" parent="."]
 editor/display_folded = true
 
 [node name="Area2D" type="Area2D" parent="Laundry"]
-editor/display_folded = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Laundry/Area2D"]
 polygon = PoolVector2Array( 573, 114, 572, -37, 760, -37, 760, -37, 760, 116 )
 
 [node name="coliders" type="TileMap" parent="Laundry"]
 modulate = Color( 0.117647, 0.0627451, 0.0156863, 0.254902 )
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 collision_use_kinematic = true
 collision_bounce = 0.01
@@ -236,14 +232,13 @@ tile_data = PoolIntArray( -131036, 0, 655371, -131035, 0, 655372, -131034, 0, 65
 
 [node name="Laundry" type="Node2D" parent="Laundry"]
 
-[node name="laundryToKitchen" parent="Laundry/Laundry" instance=ExtResource( 3 )]
-editor/display_folded = true
+[node name="laundryToKitchen" parent="Laundry/Laundry" instance=ExtResource( 4 )]
 position = Vector2( 592, 48 )
 rotation = -1.5708
 portID = "laundryToKitchen"
 portDestineID = "kitchenToLaundry"
 
-[node name="Fog" parent="Laundry" instance=ExtResource( 4 )]
+[node name="Fog" parent="Laundry" instance=ExtResource( 5 )]
 
 [node name="Kitchen" type="Node2D" parent="."]
 editor/display_folded = true
@@ -256,7 +251,7 @@ polygon = PoolVector2Array( 284, -26, 380, -38, 467, -26, 466, 275, 286, 272 )
 
 [node name="coliders" type="TileMap" parent="Kitchen"]
 modulate = Color( 0.117647, 0.0627451, 0.0156863, 0.254902 )
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 collision_use_kinematic = true
 collision_bounce = 0.01
@@ -279,37 +274,38 @@ tile_data = PoolIntArray( -131049, 0, 655371, -131048, 0, 655372, -131047, 0, 65
 
 [node name="Kitchen" type="Node2D" parent="Kitchen"]
 
-[node name="kitchenToHall" parent="Kitchen/Kitchen" instance=ExtResource( 3 )]
+[node name="kitchenToHall" parent="Kitchen/Kitchen" instance=ExtResource( 4 )]
 position = Vector2( 464, 240 )
 rotation = -3.14159
 portID = "kitchenToHall"
 portDestineID = "HallToKitchen"
 
-[node name="kitchenToLaundry" parent="Kitchen/Kitchen" instance=ExtResource( 3 )]
+[node name="kitchenToLaundry" parent="Kitchen/Kitchen" instance=ExtResource( 4 )]
 position = Vector2( 528, 32 )
 rotation = 1.5708
 portID = "kitchenToLaundry"
 portDestineID = "laundryToKitchen"
 
-[node name="kitchenToDinningRoom" parent="Kitchen/Kitchen" instance=ExtResource( 3 )]
+[node name="kitchenToDinningRoom" parent="Kitchen/Kitchen" instance=ExtResource( 4 )]
 position = Vector2( 528, 128 )
 rotation = 1.5708
 portID = "kitchenToDinningRoom"
 portDestineID = "DinningRoomToKitchen"
 
-[node name="Fog" parent="Kitchen" instance=ExtResource( 4 )]
+[node name="Fog" parent="Kitchen" instance=ExtResource( 5 )]
 
 [node name="Hall" type="Node2D" parent="."]
 editor/display_folded = true
 
 [node name="Area2D" type="Area2D" parent="Hall"]
+editor/display_folded = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hall/Area2D"]
 polygon = PoolVector2Array( 155, 123, 244, 120, 340, 126, 340, 259, 155, 259 )
 
 [node name="coliders" type="TileMap" parent="Hall"]
 modulate = Color( 0.117647, 0.0627451, 0.0156863, 0.254902 )
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 collision_use_kinematic = true
 collision_bounce = 0.01
@@ -331,28 +327,26 @@ format = 1
 tile_data = PoolIntArray( 524298, 0, 655371, 524299, 0, 655372, 524300, 0, 655372, 524301, 0, 655373, 524302, 0, 655373, 524303, 0, 655373, 524304, 0, 655373, 524305, 0, 655373, 524306, 0, 655374, 524307, 0, 655373, 524308, 0, 655375, 589834, 0, 720907, 589835, 0, 720908, 589836, 0, 1376267, 589837, 0, 720909, 589838, 0, 1376267, 589840, 0, 1376267, 589841, 0, 720909, 589842, 0, 1376267, 589843, 0, 720910, 589844, 0, 720911, 655370, 0, 720907, 655371, 0, 1114127, 655379, 0, 786446, 655380, 0, 720911, 720906, 0, 720907, 720915, 0, 786446, 720916, 0, 720911, 786442, 0, 720907, 786443, 0, 786444, 786451, 0, 786446, 786452, 0, 720911, 851978, 0, 720907, 851979, 0, 1114127, 851987, 0, 786446, 851988, 0, 720911, 917514, 0, 720907, 917515, 0, 851980, 917516, 0, 1179659, 917517, 0, 851981, 917518, 0, 851981, 917520, 0, 851981, 917521, 0, 851981, 917522, 0, 1179659, 917523, 0, 851982, 917524, 0, 720911, 983050, 0, 917515, 983051, 0, 917516, 983052, 0, 917516, 983053, 0, 917516, 983054, 0, 917516, 983055, 0, 917516, 983056, 0, 917516, 983057, 0, 917516, 983058, 0, 917516, 983059, 0, 917517, 983060, 0, 917519 )
 
 [node name="Hall" type="Node2D" parent="Hall"]
-
-[node name="HallToKitchen" parent="Hall/Hall" instance=ExtResource( 3 )]
 editor/display_folded = true
+
+[node name="HallToKitchen" parent="Hall/Hall" instance=ExtResource( 4 )]
 position = Vector2( 240, 144 )
 portID = "HallToKitchen"
 portDestineID = "kitchenToHall"
 
-[node name="HallToEntrace" parent="Hall/Hall" instance=ExtResource( 3 )]
-editor/display_folded = true
+[node name="HallToEntrace" parent="Hall/Hall" instance=ExtResource( 4 )]
 position = Vector2( 256, 240 )
 rotation = -3.14159
 portID = "HallToEntrace"
 portDestineID = "EntraceToHall"
 
-[node name="HallToRow" parent="Hall/Hall" instance=ExtResource( 3 )]
-editor/display_folded = true
+[node name="HallToRow" parent="Hall/Hall" instance=ExtResource( 4 )]
 position = Vector2( 176, 192 )
 rotation = -1.5708
 portID = "HallToRow"
 portDestineID = "rowToHall"
 
-[node name="Fog" parent="Hall" instance=ExtResource( 4 )]
+[node name="Fog" parent="Hall" instance=ExtResource( 5 )]
 
 [node name="Row" type="Node2D" parent="."]
 editor/display_folded = true
@@ -366,7 +360,7 @@ polygon = PoolVector2Array( -54, 266, 61, 258, 183, 267, 180, 407, -54, 407 )
 
 [node name="coliders" type="TileMap" parent="Row"]
 modulate = Color( 0.117647, 0.0627451, 0.0156863, 0.254902 )
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 collision_use_kinematic = true
 collision_bounce = 0.01
@@ -389,35 +383,35 @@ tile_data = PoolIntArray( 1179645, 0, 655371, 1179646, 0, 655372, 1179647, 0, 65
 
 [node name="Row" type="Node2D" parent="Row"]
 
-[node name="rowToPlayerRoom" parent="Row/Row" instance=ExtResource( 3 )]
+[node name="rowToPlayerRoom" parent="Row/Row" instance=ExtResource( 4 )]
 position = Vector2( 16, 288 )
 portID = "rowToPlayerRoom"
 portDestineID = "pRoomToRow"
 
-[node name="rowToHall" parent="Row/Row" instance=ExtResource( 3 )]
+[node name="rowToHall" parent="Row/Row" instance=ExtResource( 4 )]
 position = Vector2( 160, 320 )
 rotation = 1.57079
 portID = "rowToHall"
 portDestineID = "HallToRow"
 
-[node name="rowToBathdroom" parent="Row/Row" instance=ExtResource( 3 )]
+[node name="rowToBathdroom" parent="Row/Row" instance=ExtResource( 4 )]
 position = Vector2( 96, 288 )
 portID = "rowToBathdroom"
 portDestineID = "bathdroomToRow"
 
-[node name="rowToParentsRoom" parent="Row/Row" instance=ExtResource( 3 )]
+[node name="rowToParentsRoom" parent="Row/Row" instance=ExtResource( 4 )]
 position = Vector2( 32, 384 )
 rotation = -3.14159
 portID = "rowToParentsRoom"
 portDestineID = "parentsRoomToRow"
 
-[node name="Fog" parent="Row" instance=ExtResource( 4 )]
+[node name="Fog" parent="Row" instance=ExtResource( 5 )]
 
 [node name="Players room" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Area2D" type="Area2D" parent="Players room"]
 editor/display_folded = true
+visible = false
 position = Vector2( 53, 50 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Players room/Area2D"]
@@ -425,8 +419,9 @@ position = Vector2( -86, -120 )
 polygon = PoolVector2Array( -16, 28, -16, 28, 53, 18, 228, 27, 228, 181, 146, 181, 148, 260, -19, 261 )
 
 [node name="coliders" type="TileMap" parent="Players room"]
+visible = false
 modulate = Color( 0.117647, 0.0627451, 0.0156863, 0.254902 )
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 collision_use_kinematic = true
 collision_bounce = 0.01
@@ -436,26 +431,38 @@ format = 1
 tile_data = PoolIntArray( -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, 65534, 0, 0, 10, 0, 0, 131070, 0, 0, 65546, 0, 0, 196606, 0, 0, 131082, 0, 0, 262142, 0, 0, 196618, 0, 0, 327678, 0, 0, 262154, 0, 0, 393214, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 458750, 0, 0, 393221, 0, 0, 524286, 0, 0, 458757, 0, 0, 589822, 0, 0, 524293, 0, 0, 655358, 0, 0, 589829, 0, 0, 720894, 0, 0, 720895, 0, 0, 655360, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 720897, 0, 0, 720898, 0, 0 )
 
 [node name="Floor" type="TileMap" parent="Players room"]
+visible = false
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 65535, 0, 196615, 0, 0, 196615, 1, 0, 196615, 2, 0, 196615, 3, 0, 196615, 4, 0, 196615, 5, 0, 196615, 6, 0, 196615, 7, 0, 196615, 8, 0, 196615, 9, 0, 196615, 131071, 0, 196615, 65536, 0, 196615, 65537, 0, 196615, 65538, 0, 196615, 65539, 0, 196615, 65540, 0, 196615, 65541, 0, 196615, 65542, 0, 196615, 65543, 0, 196615, 65544, 0, 196615, 65545, 0, 196615, 196607, 0, 196615, 131072, 0, 196615, 131073, 0, 196615, 131074, 0, 196615, 131075, 0, 196615, 131076, 0, 196615, 131077, 0, 196615, 131078, 0, 196615, 131079, 0, 196615, 131080, 0, 196615, 131081, 0, 196615, 262143, 0, 196615, 196608, 0, 196615, 196609, 0, 196615, 196610, 0, 196615, 196611, 0, 196615, 196612, 0, 196615, 196613, 0, 196615, 196614, 0, 196615, 196615, 0, 196615, 196616, 0, 196615, 196617, 0, 196615, 327679, 0, 196615, 262144, 0, 196615, 262145, 0, 196615, 262146, 0, 196615, 262147, 0, 196615, 262148, 0, 196615, 262149, 0, 196615, 262150, 0, 196615, 262151, 0, 196615, 262152, 0, 196615, 262153, 0, 196615, 393215, 0, 196615, 327680, 0, 196615, 327681, 0, 196615, 327682, 0, 196615, 327683, 0, 196615, 327684, 0, 196615, 458751, 0, 196615, 393216, 0, 196615, 393217, 0, 196615, 393218, 0, 196615, 393219, 0, 196615, 393220, 0, 196615, 524287, 0, 196615, 458752, 0, 196615, 458753, 0, 196615, 458754, 0, 196615, 458755, 0, 196615, 458756, 0, 196615, 589823, 0, 196615, 524288, 0, 196615, 524289, 0, 196615, 524290, 0, 196615, 524291, 0, 196615, 524292, 0, 196615, 655359, 0, 196615, 589824, 0, 196615, 589825, 0, 196615, 589826, 0, 196615, 589827, 0, 196615, 589828, 0, 196615 )
 
 [node name="Walls" type="TileMap" parent="Players room"]
+visible = false
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( -65539, 0, 655371, -65538, 0, 655372, -65537, 0, 655373, -131072, 0, 655373, -131071, 0, 655373, -131070, 0, 655373, -131069, 0, 655373, -131068, 0, 655373, -131067, 0, 655373, -131066, 0, 655373, -131065, 0, 655373, -131064, 0, 655373, -131063, 0, 655373, -131062, 0, 655374, -131061, 0, 655375, -3, 0, 720907, -2, 0, 720908, -1, 0, 720909, -65536, 0, 720909, -65535, 0, 720909, -65534, 0, 720909, -65533, 0, 720909, -65532, 0, 720909, -65531, 0, 720909, -65530, 0, 720909, -65529, 0, 720909, -65528, 0, 720909, -65527, 0, 720909, -65526, 0, 720910, -65525, 0, 720911, 65533, 0, 786443, 65534, 0, 786444, 10, 0, 786446, 11, 0, 720911, 131069, 0, 786443, 131070, 0, 786444, 65546, 0, 786446, 65547, 0, 720911, 196605, 0, 786443, 196606, 0, 786444, 131082, 0, 786446, 131083, 0, 720911, 262141, 0, 786443, 262142, 0, 786444, 196618, 0, 786446, 196619, 0, 720911, 327677, 0, 786443, 327678, 0, 786444, 262154, 0, 786446, 262155, 0, 720911, 393213, 0, 786443, 393214, 0, 786444, 327685, 0, 1048588, 327686, 0, 851981, 327687, 0, 851981, 327688, 0, 851981, 327689, 0, 851981, 327690, 0, 851982, 327691, 0, 720911, 458749, 0, 786443, 458750, 0, 786444, 393221, 0, 786446, 393222, 0, 1245195, 393223, 0, 917518, 393224, 0, 917518, 393225, 0, 917518, 393226, 0, 917518, 393227, 0, 917519, 524285, 0, 786443, 524286, 0, 786444, 458757, 0, 786446, 458758, 0, 720911, 589821, 0, 786443, 589822, 0, 786444, 524293, 0, 786446, 524294, 0, 720911, 655357, 0, 786443, 655358, 0, 786444, 589829, 0, 786446, 589830, 0, 720911, 720893, 0, 786443, 720894, 0, 851980, 720895, 0, 851981, 655360, 0, 851981, 655362, 0, 1179659, 655363, 0, 851981, 655364, 0, 851981, 655365, 0, 851982, 655366, 0, 786447, 786429, 0, 917515, 786430, 0, 917516, 786431, 0, 917516, 720896, 0, 917516, 720897, 0, 917516, 720898, 0, 917516, 720899, 0, 917516, 720900, 0, 917516, 720901, 0, 917516, 720902, 0, 917519 )
 
 [node name="Players Bedroom" type="Node2D" parent="Players room"]
+editor/display_folded = true
+visible = false
 
-[node name="pRoomToRow" parent="Players room/Players Bedroom" instance=ExtResource( 3 )]
+[node name="pRoomToRow" parent="Players room/Players Bedroom" instance=ExtResource( 4 )]
 position = Vector2( 32, 176 )
 rotation = -3.14159
 portID = "pRoomToRow"
 portDestineID = "rowToPlayerRoom"
 
-[node name="Fog" parent="Players room" instance=ExtResource( 4 )]
+[node name="Fog" parent="Players room" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Furniture2" type="TileMap" parent="Players room"]
+visible = false
+format = 1
+
+[node name="Closet" parent="Players room" instance=ExtResource( 6 )]
+position = Vector2( 16, -2 )
 
 [node name="Parents Room" type="Node2D" parent="."]
 editor/display_folded = true
@@ -470,7 +477,7 @@ polygon = PoolVector2Array( -49, 445, 58, 436, 185, 442, 183, 634, -51, 633 )
 
 [node name="coliders" type="TileMap" parent="Parents Room"]
 modulate = Color( 0.117647, 0.0627451, 0.0156863, 0.254902 )
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 collision_use_kinematic = true
 collision_bounce = 0.01
@@ -491,17 +498,17 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 1900541, 0, 655371, 1900542, 0, 655372, 1900543, 0, 655373, 1835008, 0, 655373, 1835009, 0, 655373, 1835010, 0, 655373, 1835011, 0, 655373, 1835012, 0, 655373, 1835013, 0, 655373, 1835014, 0, 655373, 1835015, 0, 655373, 1835016, 0, 655373, 1835017, 0, 655373, 1835018, 0, 655375, 1966077, 0, 720907, 1966078, 0, 720908, 1966079, 0, 720909, 1900544, 0, 720909, 1900546, 0, 1376267, 1900547, 0, 720909, 1900548, 0, 720909, 1900549, 0, 720909, 1900550, 0, 720909, 1900551, 0, 720909, 1900552, 0, 720909, 1900553, 0, 720910, 1900554, 0, 720911, 2031613, 0, 786443, 2031614, 0, 786444, 1966089, 0, 786446, 1966090, 0, 720911, 2097149, 0, 786443, 2097150, 0, 786444, 2031625, 0, 786446, 2031626, 0, 720911, 2162685, 0, 786443, 2162686, 0, 786444, 2097161, 0, 786446, 2097162, 0, 720911, 2228221, 0, 786443, 2228222, 0, 786444, 2162697, 0, 786446, 2162698, 0, 720911, 2293757, 0, 786443, 2293758, 0, 786444, 2228233, 0, 786446, 2228234, 0, 720911, 2359293, 0, 786443, 2359294, 0, 786444, 2293769, 0, 786446, 2293770, 0, 720911, 2424829, 0, 786443, 2424830, 0, 786444, 2359305, 0, 786446, 2359306, 0, 720911, 2490365, 0, 851979, 2490366, 0, 851980, 2490367, 0, 851981, 2424832, 0, 851981, 2424833, 0, 851981, 2424834, 0, 851981, 2424835, 0, 851981, 2424836, 0, 851981, 2424837, 0, 851981, 2424838, 0, 851981, 2424839, 0, 851981, 2424840, 0, 851981, 2424841, 0, 851982, 2424842, 0, 720911, 2555901, 0, 917515, 2555902, 0, 917516, 2555903, 0, 917516, 2490368, 0, 917516, 2490369, 0, 917516, 2490370, 0, 917516, 2490371, 0, 917516, 2490372, 0, 917516, 2490373, 0, 917516, 2490374, 0, 917516, 2490375, 0, 917516, 2490376, 0, 917516, 2490377, 0, 917518, 2490378, 0, 917519 )
 
+[node name="Furniture" type="TileMap" parent="Parents Room"]
+format = 1
+
 [node name="Parents Bedroom" type="Node2D" parent="Parents Room"]
 
-[node name="parentsRoomToRow" parent="Parents Room/Parents Bedroom" instance=ExtResource( 3 )]
-editor/display_folded = true
+[node name="parentsRoomToRow" parent="Parents Room/Parents Bedroom" instance=ExtResource( 4 )]
 position = Vector2( 16, 464 )
 portID = "parentsRoomToRow"
 portDestineID = "rowToParentsRoom"
 
-[node name="Fog" parent="Parents Room" instance=ExtResource( 4 )]
+[node name="Fog" parent="Parents Room" instance=ExtResource( 5 )]
 
-[node name="Objetos" type="TileMap" parent="."]
-tile_set = SubResource( 3 )
-cell_size = Vector2( 16, 16 )
-format = 1
+[node name="Sprite" parent="." instance=ExtResource( 7 )]
+position = Vector2( 617, 540.021 )

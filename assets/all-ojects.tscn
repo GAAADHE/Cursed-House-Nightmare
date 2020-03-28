@@ -1,0 +1,148 @@
+[gd_scene load_steps=47 format=2]
+
+[ext_resource path="res://tilset.tres" type="TileSet" id=1]
+[ext_resource path="res://assets/furniture/sign.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/furniture/EasterEgg1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/furniture/EasterEgg2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/furniture/PalletColor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/furniture/table.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/furniture/Pizza.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/furniture/Clothings.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/furniture/Sink.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/furniture/Skull.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/furniture/Candle.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/furniture/Candlers.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/furniture/Computer.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/furniture/Vaccum Cleaner.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/furniture/Dustpan.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/furniture/Broom.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/furniture/Squeegee.tscn" type="PackedScene" id=17]
+[ext_resource path="res://assets/furniture/Mop.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/furniture/Sofa on top.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/furniture/Closet.tscn" type="PackedScene" id=20]
+[ext_resource path="res://assets/furniture/Tinyiest Pumpkin.tscn" type="PackedScene" id=21]
+[ext_resource path="res://assets/furniture/Tiny Pumpkin2.tscn" type="PackedScene" id=22]
+[ext_resource path="res://assets/furniture/Medium Pumpkin.tscn" type="PackedScene" id=23]
+[ext_resource path="res://assets/furniture/Big Pumpkin.tscn" type="PackedScene" id=24]
+[ext_resource path="res://assets/furniture/Couple bed.tscn" type="PackedScene" id=25]
+[ext_resource path="res://assets/furniture/Clothers Can.tscn" type="PackedScene" id=26]
+[ext_resource path="res://assets/furniture/Freezer.tscn" type="PackedScene" id=27]
+[ext_resource path="res://assets/furniture/Nightstand.tscn" type="PackedScene" id=28]
+[ext_resource path="res://assets/furniture/Single bed.tscn" type="PackedScene" id=29]
+[ext_resource path="res://assets/furniture/Isometric paper box.tscn" type="PackedScene" id=30]
+[ext_resource path="res://assets/furniture/Tiny paper box on on top.tscn" type="PackedScene" id=31]
+[ext_resource path="res://assets/furniture/Big paper box.tscn" type="PackedScene" id=32]
+[ext_resource path="res://assets/furniture/Tresh can on top.tscn" type="PackedScene" id=33]
+[ext_resource path="res://assets/furniture/Crucifix.tscn" type="PackedScene" id=34]
+[ext_resource path="res://assets/furniture/Woodbox.tscn" type="PackedScene" id=35]
+[ext_resource path="res://assets/furniture/Big stant.tscn" type="PackedScene" id=36]
+[ext_resource path="res://assets/furniture/Tiny stant.tscn" type="PackedScene" id=37]
+[ext_resource path="res://assets/furniture/Bucket.tscn" type="PackedScene" id=38]
+[ext_resource path="res://assets/furniture/Sink Laundry.tscn" type="PackedScene" id=39]
+[ext_resource path="res://assets/furniture/Clothesline.tscn" type="PackedScene" id=40]
+[ext_resource path="res://assets/furniture/Bathtub on top.tscn" type="PackedScene" id=41]
+[ext_resource path="res://assets/furniture/Chair.tscn" type="PackedScene" id=42]
+[ext_resource path="res://assets/furniture/Washing machine.tscn" type="PackedScene" id=43]
+[ext_resource path="res://assets/furniture/Strange plant.tscn" type="PackedScene" id=44]
+[ext_resource path="res://assets/furniture/Tv.tscn" type="PackedScene" id=45]
+[ext_resource path="res://assets/furniture/Stant.tscn" type="PackedScene" id=46]
+
+[node name="Node" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+visible = false
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 1, 524291, 1, 1, 524291, 2, 1, 524291, 3, 1, 524291, 4, 1, 524291, 5, 1, 524291, 6, 1, 524291, 7, 1, 524291, 8, 1, 524291, 9, 1, 524291, 10, 1, 524291, 11, 1, 524291, 12, 1, 524291, 13, 1, 524291, 14, 1, 524291, 15, 1, 524291, 16, 1, 524291, 17, 1, 524291, 18, 1, 524291, 19, 1, 524291, 65536, 1, 524291, 65537, 1, 524291, 65538, 1, 524291, 65539, 1, 524291, 65540, 1, 524291, 65541, 1, 524291, 65542, 1, 524291, 65543, 1, 524291, 65544, 1, 524291, 65545, 1, 524291, 65546, 1, 524291, 65547, 1, 524291, 65548, 1, 524291, 65549, 1, 524291, 65550, 1, 524291, 65551, 1, 524291, 65552, 1, 524291, 65553, 1, 524291, 65554, 1, 524291, 65555, 1, 524291, 131072, 1, 524291, 131073, 1, 524291, 131074, 1, 524291, 131075, 1, 524291, 131076, 1, 524291, 131077, 1, 524291, 131078, 1, 524291, 131079, 1, 524291, 131080, 1, 524291, 131081, 1, 524291, 131082, 1, 524291, 131083, 1, 524291, 131084, 1, 524291, 131085, 1, 524291, 131086, 1, 524291, 131087, 1, 524291, 131088, 1, 524291, 131089, 1, 524291, 131090, 1, 524291, 131091, 1, 524291, 196608, 1, 524291, 196609, 1, 524291, 196610, 1, 524291, 196611, 1, 524291, 196612, 1, 524291, 196613, 1, 524291, 196614, 1, 524291, 196615, 1, 524291, 196616, 1, 524291, 196617, 1, 524291, 196618, 1, 524291, 196619, 1, 524291, 196620, 1, 524291, 196621, 1, 524291, 196622, 1, 524291, 196623, 1, 524291, 196624, 1, 524291, 196625, 1, 524291, 196626, 1, 524291, 196627, 1, 524291, 262144, 1, 524291, 262145, 1, 524291, 262146, 1, 524291, 262147, 1, 524291, 262148, 1, 524291, 262149, 1, 524291, 262150, 1, 524291, 262151, 1, 524291, 262152, 1, 524291, 262153, 1, 524291, 262154, 1, 524291, 262155, 1, 524291, 262156, 1, 524291, 262157, 1, 524291, 262158, 1, 524291, 262159, 1, 524291, 262160, 1, 524291, 262161, 1, 524291, 262162, 1, 524291, 262163, 1, 524291, 327680, 1, 524291, 327681, 1, 524291, 327682, 1, 524291, 327683, 1, 524291, 327684, 1, 524291, 327685, 1, 524291, 327686, 1, 524291, 327687, 1, 524291, 327688, 1, 524291, 327689, 1, 524291, 327690, 1, 524291, 327691, 1, 524291, 327692, 1, 524291, 327693, 1, 524291, 327694, 1, 524291, 327695, 1, 524291, 327696, 1, 524291, 327697, 1, 524291, 327698, 1, 524291, 327699, 1, 524291, 393216, 1, 524291, 393217, 1, 524291, 393218, 1, 524291, 393219, 1, 524291, 393220, 1, 524291, 393221, 1, 524291, 393222, 1, 524291, 393223, 1, 524291, 393224, 1, 524291, 393225, 1, 524291, 393226, 1, 524291, 393227, 1, 524291, 393228, 1, 524291, 393229, 1, 524291, 393230, 1, 524291, 393231, 1, 524291, 393232, 1, 524291, 393233, 1, 524291, 393234, 1, 524291, 393235, 1, 524291, 458752, 1, 524291, 458753, 1, 524291, 458754, 1, 524291, 458755, 1, 524291, 458756, 1, 524291, 458757, 1, 524291, 458758, 1, 524291, 458759, 1, 524291, 458760, 1, 524291, 458761, 1, 524291, 458762, 1, 524291, 458763, 1, 524291, 458764, 1, 524291, 458765, 1, 524291, 458766, 1, 524291, 458767, 1, 524291, 458768, 1, 524291, 458769, 1, 524291, 458770, 1, 524291, 458771, 1, 524291, 524288, 1, 524291, 524289, 1, 524291, 524290, 1, 524291, 524291, 1, 524291, 524292, 1, 524291, 524293, 1, 524291, 524294, 1, 524291, 524295, 1, 524291, 524296, 1, 524291, 524297, 1, 524291, 524298, 1, 524291, 524299, 1, 524291, 524300, 1, 524291, 524301, 1, 524291, 524302, 1, 524291, 524303, 1, 524291, 524304, 1, 524291, 524305, 1, 524291, 524306, 1, 524291, 524307, 1, 524291, 589824, 1, 524291, 589825, 1, 524291, 589826, 1, 524291, 589827, 1, 524291, 589828, 1, 524291, 589829, 1, 524291, 589830, 1, 524291, 589831, 1, 524291, 589832, 1, 524291, 589833, 1, 524291, 589834, 1, 524291, 589835, 1, 524291, 589836, 1, 524291, 589837, 1, 524291, 589838, 1, 524291, 589839, 1, 524291, 589840, 1, 524291, 589841, 1, 524291, 589842, 1, 524291, 589843, 1, 524291, 655360, 1, 524291, 655361, 1, 524291, 655362, 1, 524291, 655363, 1, 524291, 655364, 1, 524291, 655365, 1, 524291, 655366, 1, 524291, 655367, 1, 524291, 655368, 1, 524291, 655369, 1, 524291, 655370, 1, 524291, 655371, 1, 524291, 655372, 1, 524291, 655373, 1, 524291, 655374, 1, 524291, 655375, 1, 524291, 655376, 1, 524291, 655377, 1, 524291, 655378, 1, 524291, 655379, 1, 524291, 720896, 1, 524291, 720897, 1, 524291, 720898, 1, 524291, 720899, 1, 524291, 720900, 1, 524291, 720901, 1, 524291, 720902, 1, 524291, 720903, 1, 524291, 720904, 1, 524291, 720905, 1, 524291, 720906, 1, 524291, 720907, 1, 524291, 720908, 1, 524291, 720909, 1, 524291, 720910, 1, 524291, 720911, 1, 524291, 720912, 1, 524291, 720913, 1, 524291, 720914, 1, 524291, 720915, 1, 524291, 786432, 1, 524291, 786433, 1, 524291, 786434, 1, 524291, 786435, 1, 524291, 786436, 1, 524291, 786437, 1, 524291, 786438, 1, 524291, 786439, 1, 524291, 786440, 1, 524291, 786441, 1, 524291, 786442, 1, 524291, 786443, 1, 524291, 786444, 1, 524291, 786445, 1, 524291, 786446, 1, 524291, 786447, 1, 524291, 786448, 1, 524291, 786449, 1, 524291, 786450, 1, 524291, 786451, 1, 524291, 851968, 1, 524291, 851969, 1, 524291, 851970, 1, 524291, 851971, 1, 524291, 851972, 1, 524291, 851973, 1, 524291, 851974, 1, 524291, 851975, 1, 524291, 851976, 1, 524291, 851977, 1, 524291, 851978, 1, 524291, 851979, 1, 524291, 851980, 1, 524291, 851981, 1, 524291, 851982, 1, 524291, 851983, 1, 524291, 851984, 1, 524291, 851985, 1, 524291, 851986, 1, 524291, 851987, 1, 524291, 917504, 1, 524291, 917505, 1, 524291, 917506, 1, 524291, 917507, 1, 524291, 917508, 1, 524291, 917509, 1, 524291, 917510, 1, 524291, 917511, 1, 524291, 917512, 1, 524291, 917513, 1, 524291, 917514, 1, 524291, 917515, 1, 524291, 917516, 1, 524291, 917517, 1, 524291, 917518, 1, 524291, 917519, 1, 524291, 917520, 1, 524291, 917521, 1, 524291, 917522, 1, 524291, 917523, 1, 524291, 983040, 1, 524291, 983041, 1, 524291, 983042, 1, 524291, 983043, 1, 524291, 983044, 1, 524291, 983045, 1, 524291, 983046, 1, 524291, 983047, 1, 524291, 983048, 1, 524291, 983049, 1, 524291, 983050, 1, 524291, 983051, 1, 524291, 983052, 1, 524291, 983053, 1, 524291, 983054, 1, 524291, 983055, 1, 524291, 983056, 1, 524291, 983057, 1, 524291, 983058, 1, 524291, 983059, 1, 524291, 1048576, 1, 524291, 1048577, 1, 524291, 1048578, 1, 524291, 1048579, 1, 524291, 1048580, 1, 524291, 1048581, 1, 524291, 1048582, 1, 524291, 1048583, 1, 524291, 1048584, 1, 524291, 1048585, 1, 524291, 1048586, 1, 524291, 1048587, 1, 524291, 1048588, 1, 524291, 1048589, 1, 524291, 1048590, 1, 524291, 1048591, 1, 524291, 1048592, 1, 524291, 1048593, 1, 524291, 1048594, 1, 524291, 1048595, 1, 524291, 1114112, 1, 524291, 1114113, 1, 524291, 1114114, 1, 524291, 1114115, 1, 524291, 1114116, 1, 524291, 1114117, 1, 524291, 1114118, 1, 524291, 1114119, 1, 524291, 1114120, 1, 524291, 1114121, 1, 524291, 1114122, 1, 524291, 1114123, 1, 524291, 1114124, 1, 524291, 1114125, 1, 524291, 1114126, 1, 524291, 1114127, 1, 524291, 1114128, 1, 524291, 1114129, 1, 524291, 1114130, 1, 524291, 1114131, 1, 524291, 1179648, 1, 524291, 1179649, 1, 524291, 1179650, 1, 524291, 1179651, 1, 524291, 1179652, 1, 524291, 1179653, 1, 524291, 1179654, 1, 524291, 1179655, 1, 524291, 1179656, 1, 524291, 1179657, 1, 524291, 1179658, 1, 524291, 1179659, 1, 524291, 1179660, 1, 524291, 1179661, 1, 524291, 1179662, 1, 524291, 1179663, 1, 524291, 1179664, 1, 524291, 1179665, 1, 524291, 1179666, 1, 524291, 1179667, 1, 524291, 1245184, 1, 524291, 1245185, 1, 524291, 1245186, 1, 524291, 1245187, 1, 524291, 1245188, 1, 524291, 1245189, 1, 524291, 1245190, 1, 524291, 1245191, 1, 524291, 1245192, 1, 524291, 1245193, 1, 524291, 1245194, 1, 524291, 1245195, 1, 524291, 1245196, 1, 524291, 1245197, 1, 524291, 1245198, 1, 524291, 1245199, 1, 524291, 1245200, 1, 524291, 1245201, 1, 524291, 1245202, 1, 524291, 1245203, 1, 524291, 1310720, 1, 524291, 1310721, 1, 524291, 1310722, 1, 524291, 1310723, 1, 524291, 1310724, 1, 524291, 1310725, 1, 524291, 1310726, 1, 524291, 1310727, 1, 524291, 1310728, 1, 524291, 1310729, 1, 524291, 1310730, 1, 524291, 1310731, 1, 524291, 1310732, 1, 524291, 1310733, 1, 524291, 1310734, 1, 524291, 1310735, 1, 524291, 1310736, 1, 524291, 1310737, 1, 524291, 1310738, 1, 524291, 1310739, 1, 524291, 1376256, 1, 524291, 1376257, 1, 524291, 1376258, 1, 524291, 1376259, 1, 524291, 1376260, 1, 524291, 1376261, 1, 524291, 1376262, 1, 524291, 1376263, 1, 524291, 1376264, 1, 524291, 1376265, 1, 524291, 1376266, 1, 524291, 1376267, 1, 524291, 1376268, 1, 524291, 1376269, 1, 524291, 1376270, 1, 524291, 1376271, 1, 524291, 1376272, 1, 524291, 1376273, 1, 524291, 1376274, 1, 524291, 1376275, 1, 524291, 1441792, 1, 524291, 1441793, 1, 524291, 1441794, 1, 524291, 1441795, 1, 524291, 1441796, 1, 524291, 1441797, 1, 524291, 1441798, 1, 524291, 1441799, 1, 524291, 1441800, 1, 524291, 1441801, 1, 524291, 1441802, 1, 524291, 1441803, 1, 524291, 1441804, 1, 524291, 1441805, 1, 524291, 1441806, 1, 524291, 1441807, 1, 524291, 1441808, 1, 524291, 1441809, 1, 524291, 1441810, 1, 524291, 1441811, 1, 524291, 1507328, 1, 524291, 1507329, 1, 524291, 1507330, 1, 524291, 1507331, 1, 524291, 1507332, 1, 524291, 1507333, 1, 524291, 1507334, 1, 524291, 1507335, 1, 524291, 1507336, 1, 524291, 1507337, 1, 524291, 1507338, 1, 524291, 1507339, 1, 524291, 1507340, 1, 524291, 1507341, 1, 524291, 1507342, 1, 524291, 1507343, 1, 524291, 1507344, 1, 524291, 1507345, 1, 524291, 1507346, 1, 524291, 1507347, 1, 524291, 1572864, 1, 524291, 1572865, 1, 524291, 1572866, 1, 524291, 1572867, 1, 524291, 1572868, 1, 524291, 1572869, 1, 524291, 1572870, 1, 524291, 1572871, 1, 524291, 1572872, 1, 524291, 1572873, 1, 524291, 1572874, 1, 524291, 1572875, 1, 524291, 1572876, 1, 524291, 1572877, 1, 524291, 1572878, 1, 524291, 1572879, 1, 524291, 1572880, 1, 524291, 1572881, 1, 524291, 1572882, 1, 524291, 1572883, 1, 524291, 1638400, 1, 524291, 1638401, 1, 524291, 1638402, 1, 524291, 1638403, 1, 524291, 1638404, 1, 524291, 1638405, 1, 524291, 1638406, 1, 524291, 1638407, 1, 524291, 1638408, 1, 524291, 1638409, 1, 524291, 1638410, 1, 524291, 1638411, 1, 524291, 1638412, 1, 524291, 1638413, 1, 524291, 1638414, 1, 524291, 1638415, 1, 524291, 1638416, 1, 524291, 1638417, 1, 524291, 1638418, 1, 524291, 1638419, 1, 524291, 1703936, 1, 524291, 1703937, 1, 524291, 1703938, 1, 524291, 1703939, 1, 524291, 1703940, 1, 524291, 1703941, 1, 524291, 1703942, 1, 524291, 1703943, 1, 524291, 1703944, 1, 524291, 1703945, 1, 524291, 1703946, 1, 524291, 1703947, 1, 524291, 1703948, 1, 524291, 1703949, 1, 524291, 1703950, 1, 524291, 1703951, 1, 524291, 1703952, 1, 524291, 1703953, 1, 524291, 1703954, 1, 524291, 1703955, 1, 524291, 1769472, 1, 524291, 1769473, 1, 524291, 1769474, 1, 524291, 1769475, 1, 524291, 1769476, 1, 524291, 1769477, 1, 524291, 1769478, 1, 524291, 1769479, 1, 524291, 1769480, 1, 524291, 1769481, 1, 524291, 1769482, 1, 524291, 1769483, 1, 524291, 1769484, 1, 524291, 1769485, 1, 524291, 1769486, 1, 524291, 1769487, 1, 524291, 1769488, 1, 524291, 1769489, 1, 524291, 1769490, 1, 524291, 1769491, 1, 524291, 1835008, 1, 524291, 1835009, 1, 524291, 1835010, 1, 524291, 1835011, 1, 524291, 1835012, 1, 524291, 1835013, 1, 524291, 1835014, 1, 524291, 1835015, 1, 524291, 1835016, 1, 524291, 1835017, 1, 524291, 1835018, 1, 524291, 1835019, 1, 524291, 1835020, 1, 524291, 1835021, 1, 524291, 1835022, 1, 524291, 1835023, 1, 524291, 1835024, 1, 524291, 1835025, 1, 524291, 1835026, 1, 524291, 1835027, 1, 524291, 1900544, 1, 524291, 1900545, 1, 524291, 1900546, 1, 524291, 1900547, 1, 524291, 1900548, 1, 524291, 1900549, 1, 524291, 1900550, 1, 524291, 1900551, 1, 524291, 1900552, 1, 524291, 1900553, 1, 524291, 1900554, 1, 524291, 1900555, 1, 524291, 1900556, 1, 524291, 1900557, 1, 524291, 1900558, 1, 524291, 1900559, 1, 524291, 1900560, 1, 524291, 1900561, 1, 524291, 1900562, 1, 524291, 1900563, 1, 524291 )
+
+[node name="sign" parent="." instance=ExtResource( 2 )]
+
+[node name="EasterEgg1" parent="." instance=ExtResource( 3 )]
+
+[node name="EasterEgg2" parent="." instance=ExtResource( 4 )]
+
+[node name="PalletColor" parent="." instance=ExtResource( 5 )]
+
+[node name="table" parent="." instance=ExtResource( 6 )]
+
+[node name="Pizza" parent="." instance=ExtResource( 7 )]
+
+[node name="Clothings" parent="." instance=ExtResource( 8 )]
+
+[node name="Sink" parent="." instance=ExtResource( 9 )]
+
+[node name="Skull" parent="." instance=ExtResource( 10 )]
+
+[node name="Candle" parent="." instance=ExtResource( 11 )]
+
+[node name="Candlers" parent="." instance=ExtResource( 12 )]
+
+[node name="Computer" parent="." instance=ExtResource( 13 )]
+
+[node name="Vaccum Cleaner" parent="." instance=ExtResource( 14 )]
+
+[node name="Dustpan" parent="." instance=ExtResource( 15 )]
+
+[node name="Broom" parent="." instance=ExtResource( 16 )]
+
+[node name="Squeegee" parent="." instance=ExtResource( 17 )]
+
+[node name="Mop" parent="." instance=ExtResource( 18 )]
+
+[node name="Sofa on top" parent="." instance=ExtResource( 19 )]
+
+[node name="Closet" parent="." instance=ExtResource( 20 )]
+position = Vector2( 50, 96 )
+
+[node name="Tinyiest Pumpkin" parent="." instance=ExtResource( 21 )]
+
+[node name="Tiny Pumpkin2" parent="." instance=ExtResource( 22 )]
+
+[node name="Medium Pumpkin" parent="." instance=ExtResource( 23 )]
+
+[node name="Big Pumpkin" parent="." instance=ExtResource( 24 )]
+
+[node name="Couple bed" parent="." instance=ExtResource( 25 )]
+
+[node name="Clothers Can" parent="." instance=ExtResource( 26 )]
+
+[node name="Freezer" parent="." instance=ExtResource( 27 )]
+
+[node name="Nightstand" parent="." instance=ExtResource( 28 )]
+
+[node name="Single bed" parent="." instance=ExtResource( 29 )]
+
+[node name="Isometric paper box" parent="." instance=ExtResource( 30 )]
+
+[node name="Tiny paper box on on top" parent="." instance=ExtResource( 31 )]
+
+[node name="Big paper box" parent="." instance=ExtResource( 32 )]
+
+[node name="Tresh can on top" parent="." instance=ExtResource( 33 )]
+
+[node name="Crucifix" parent="." instance=ExtResource( 34 )]
+
+[node name="Woodbox" parent="." instance=ExtResource( 35 )]
+
+[node name="Big stant" parent="." instance=ExtResource( 36 )]
+
+[node name="Tiny stant" parent="." instance=ExtResource( 37 )]
+
+[node name="Bucket" parent="." instance=ExtResource( 38 )]
+
+[node name="Sink Laundry" parent="." instance=ExtResource( 39 )]
+
+[node name="Clothesline" parent="." instance=ExtResource( 40 )]
+
+[node name="Bathtub on top" parent="." instance=ExtResource( 41 )]
+
+[node name="Chair" parent="." instance=ExtResource( 42 )]
+
+[node name="Washing machine" parent="." instance=ExtResource( 43 )]
+
+[node name="Strange plant" parent="." instance=ExtResource( 44 )]
+
+[node name="Tv" parent="." instance=ExtResource( 45 )]
+
+[node name="Stant" parent="." instance=ExtResource( 46 )]

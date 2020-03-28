@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://atlas.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 7 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 33, 16, 14 )
+
+[node name="Pizza" type="KinematicBody2D"]
+editor/display_folded = true
+position = Vector2( 144, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 8, 7 )
+shape = SubResource( 1 )
+
+[node name="Pizza" type="Sprite" parent="."]
+texture = SubResource( 2 )
+centered = false

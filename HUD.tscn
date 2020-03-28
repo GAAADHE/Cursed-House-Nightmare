@@ -37,24 +37,26 @@ radius = 24.0
 [node name="HUD" type="CanvasLayer"]
 
 [node name="BarLife" type="ProgressBar" parent="."]
-margin_left = 5.26318
-margin_top = 5.26317
-margin_right = 135.263
-margin_bottom = 19.2632
+margin_left = 3.0
+margin_top = 4.0
+margin_right = 133.0
+margin_bottom = 26.0
+rect_scale = Vector2( 0.902889, 0.45555 )
 theme = ExtResource( 1 )
 max_value = 1000.0
 
 [node name="Points" type="Label" parent="."]
 margin_left = 267.0
-margin_top = 6.0
-margin_right = 342.0
-margin_bottom = 37.0
+margin_top = 5.0
+margin_right = 295.0
+margin_bottom = 36.0
 rect_pivot_offset = Vector2( 39.8201, 14.2582 )
 text = "0
 "
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2( 59, 223 )
+editor/display_folded = true
+position = Vector2( 69, 230 )
 z_index = 20
 script = ExtResource( 2 )
 
@@ -84,7 +86,7 @@ action = "player_right"
 
 [node name="AnalogButton" type="Sprite" parent="Node2D"]
 editor/display_folded = true
-position = Vector2( -17, -64 )
+position = Vector2( -25, -26 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 32, 0, 80, 80 )
@@ -96,6 +98,7 @@ shape = SubResource( 6 )
 script = ExtResource( 4 )
 
 [node name="Dash" type="TouchScreenButton" parent="Node2D"]
+editor/display_folded = true
 position = Vector2( 169.825, -5.76353 )
 shape = SubResource( 7 )
 action = "player_dash"
@@ -120,7 +123,7 @@ shape = SubResource( 8 )
 action = "player_hold"
 
 [node name="Sprite" type="Sprite" parent="Node2D/Hold"]
-position = Vector2( -7.62939e-005, 0 )
+position = Vector2( -7.62939e-05, 0 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 64, 0, 32, 32 )

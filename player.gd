@@ -188,19 +188,45 @@ func control_process():
 	if movedir.y == 0 and movedir.x == 0:
 		get_node("AnimatedSprite").play("idle")
 		pass
-	if movedir.y == -1 :
+	if movedir.y == -1 and movedir.x == 0:
 		get_node("AnimatedSprite").play("walkup")
 		pass
-	if movedir.y == 1 :
+	if movedir.y == 1 and movedir.x == 0:
 		get_node("AnimatedSprite").play("walkdown")
 		pass
-	if movedir.x == -1:
+	if movedir.x == -1 and movedir.y == 0:
 		get_node("AnimatedSprite").play("walkleft")
+		get_node("AnimatedSprite").set_flip_h(true)
 		pass
-	if movedir.x == 1:
+	if movedir.x == 1 and movedir.y == 0:
 		get_node("AnimatedSprite").play("walkright")
+		get_node("AnimatedSprite").set_flip_h(false)
 		pass
-		
+	pass
+	# Diagonals movimentation
+	# TOP Right
+	if movedir.x == 1 and movedir.y == -1:
+		get_node("AnimatedSprite").play("Walkupdiag")
+		get_node("AnimatedSprite").set_flip_h(false)
+		pass
+	pass
+	# TOP Left
+	if movedir.x == -1 and movedir.y == -1:
+		get_node("AnimatedSprite").play("Walkupdiag")
+		get_node("AnimatedSprite").set_flip_h(true)
+		pass
+	pass
+	# DOWN Right
+	if movedir.x == 1 and movedir.y == 1:
+		get_node("AnimatedSprite").play("Walkdowndiag")
+		get_node("AnimatedSprite").set_flip_h(true)
+		pass
+	pass
+	# DOWN left
+	if movedir.x == -1 and movedir.y == 1:
+		get_node("AnimatedSprite").play("Walkdowndiag")
+		get_node("AnimatedSprite").set_flip_h(false)
+		pass
 	pass
 func move_process():
 	if (varlueAnalog.x==0 and varlueAnalog.y ==0):
