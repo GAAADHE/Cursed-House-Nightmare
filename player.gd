@@ -233,3 +233,18 @@ func move_process():
 		var motion = movedir.normalized() * (SPEED+bustDash)
 		move_and_slide(motion, Vector2(0,0))
 	pass
+	
+# Hide in back of objects
+var isOnBack = false
+const INDEXONBACK = 0
+const INDENORMAL = 2
+func set_back_of_object(f):
+	if(f):
+		set_z_index(INDEXONBACK)
+		#print("index on back")
+		isOnBack = true
+	else:
+		set_z_index(INDENORMAL)
+		#print("index on normal")
+		isOnBack = false
+	pass

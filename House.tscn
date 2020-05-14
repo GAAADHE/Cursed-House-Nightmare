@@ -1,12 +1,35 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Background-sparkle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/collision_tiles/square-green-16x16.tres" type="TileSet" id=2]
 [ext_resource path="res://atlas.png" type="Texture" id=3]
 [ext_resource path="res://assets/Porta.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Fog.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/furniture/Closet.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/invocation.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/furniture/Tv.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/furniture/Sofa on top.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/furniture/table.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/furniture/Chair.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/furniture/Pizza.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/furniture/Clothesline.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/furniture/Sink Laundry.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/furniture/Big stant.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/furniture/Washing machine.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/furniture/Clothers Can.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/furniture/Clothings.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/furniture/Dustpan.tscn" type="PackedScene" id=17]
+[ext_resource path="res://assets/furniture/Squeegee.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/furniture/Broom.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/furniture/Mop.tscn" type="PackedScene" id=20]
+[ext_resource path="res://assets/furniture/Vaccum Cleaner.tscn" type="PackedScene" id=21]
+[ext_resource path="res://assets/furniture/Tiny stant.tscn" type="PackedScene" id=22]
+[ext_resource path="res://assets/furniture/Bucket.tscn" type="PackedScene" id=23]
+[ext_resource path="res://assets/furniture/Freezer.tscn" type="PackedScene" id=24]
+[ext_resource path="res://assets/furniture/Computer.tscn" type="PackedScene" id=25]
+[ext_resource path="res://assets/furniture/Closet.tscn" type="PackedScene" id=26]
+[ext_resource path="res://assets/furniture/Single bed.tscn" type="PackedScene" id=27]
+[ext_resource path="res://assets/furniture/Couple bed.tscn" type="PackedScene" id=28]
+[ext_resource path="res://assets/furniture/Nightstand.tscn" type="PackedScene" id=29]
+[ext_resource path="res://assets/invocation.tscn" type="PackedScene" id=30]
 
 [sub_resource type="TileSet" id=1]
 0/name = "atlas.png 0"
@@ -30,14 +53,15 @@
 extents = Vector2( 132, 90 )
 
 [node name="House" type="Node2D"]
+editor/display_folded = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 editor/display_folded = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 
 [node name="AnimatedSprite" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource( 1 )]
-visible = false
 position = Vector2( 363, 308 )
 widthbg = 1500
 heightbg = 1500
@@ -97,7 +121,6 @@ portDestineID = "LivingToEntrace"
 [node name="Fog" parent="Entrace" instance=ExtResource( 5 )]
 
 [node name="Living Room" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Area2D" type="Area2D" parent="Living Room"]
 editor/display_folded = true
@@ -152,10 +175,17 @@ portDestineID = "EntraceToLivingRoom"
 
 [node name="Fog" parent="Living Room" instance=ExtResource( 5 )]
 
+[node name="Tv" parent="Living Room" instance=ExtResource( 6 )]
+position = Vector2( 598, 560 )
+
+[node name="Sofa on top" parent="Living Room" instance=ExtResource( 7 )]
+position = Vector2( 586, 523 )
+
 [node name="Dinning room" type="Node2D" parent="."]
 editor/display_folded = true
 
 [node name="Area2D" type="Area2D" parent="Dinning room"]
+editor/display_folded = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Dinning room/Area2D"]
 polygon = PoolVector2Array( 574, 205, 759, 205, 759, 410, 573, 410, 573, 410 )
@@ -184,6 +214,7 @@ format = 1
 tile_data = PoolIntArray( 852004, 0, 655371, 852005, 0, 655372, 852006, 0, 655373, 852007, 0, 655373, 852008, 0, 655373, 852009, 0, 655373, 852010, 0, 655373, 852011, 0, 655373, 852012, 0, 655373, 852013, 0, 655372, 852014, 0, 655375, 917540, 0, 720907, 917541, 0, 720908, 917542, 0, 720909, 917543, 0, 720909, 917544, 0, 720909, 917545, 0, 720909, 917546, 0, 720909, 917547, 0, 720909, 917548, 0, 720909, 917549, 0, 720910, 917550, 0, 786447, 983076, 0, 786443, 983077, 0, 786444, 983085, 0, 786446, 983086, 0, 786447, 1048612, 0, 786443, 1048621, 0, 786446, 1048622, 0, 786447, 1114148, 0, 786443, 1114149, 0, 786444, 1114157, 0, 786446, 1114158, 0, 786447, 1179684, 0, 786443, 1179685, 0, 786444, 1179693, 0, 786446, 1179694, 0, 786447, 1245220, 0, 786443, 1245221, 0, 786444, 1245229, 0, 786446, 1245230, 0, 786447, 1310756, 0, 786443, 1310757, 0, 786444, 1310765, 0, 786446, 1310766, 0, 786447, 1376292, 0, 786443, 1376293, 0, 786444, 1376301, 0, 786446, 1376302, 0, 786447, 1441828, 0, 786443, 1441829, 0, 786444, 1441837, 0, 786446, 1441838, 0, 786447, 1507364, 0, 720907, 1507365, 0, 851980, 1507366, 0, 851981, 1507367, 0, 851981, 1507369, 0, 1179659, 1507370, 0, 1179659, 1507371, 0, 851981, 1507372, 0, 851981, 1507373, 0, 851982, 1507374, 0, 720911, 1572900, 0, 917515, 1572901, 0, 917516, 1572902, 0, 917516, 1572903, 0, 917516, 1572904, 0, 917516, 1572905, 0, 917516, 1572906, 0, 917516, 1572907, 0, 917516, 1572908, 0, 917516, 1572909, 0, 917516, 1572910, 0, 917519 )
 
 [node name="Dinning Room" type="Node2D" parent="Dinning room"]
+editor/display_folded = true
 
 [node name="DinningRoomToKitchen" parent="Dinning room/Dinning Room" instance=ExtResource( 4 )]
 position = Vector2( 592, 272 )
@@ -198,6 +229,25 @@ portID = "DinningRoomToLiving"
 portDestineID = "LivingToDiningRoom"
 
 [node name="Fog" parent="Dinning room" instance=ExtResource( 5 )]
+editor/display_folded = true
+
+[node name="table" parent="Dinning room/Fog" instance=ExtResource( 8 )]
+position = Vector2( 665, 287 )
+
+[node name="Chair" parent="Dinning room" instance=ExtResource( 9 )]
+position = Vector2( 646, 278 )
+
+[node name="Chair2" parent="Dinning room" instance=ExtResource( 9 )]
+position = Vector2( 646, 296 )
+
+[node name="Chair4" parent="Dinning room" instance=ExtResource( 9 )]
+position = Vector2( 685, 278 )
+
+[node name="Chair3" parent="Dinning room" instance=ExtResource( 9 )]
+position = Vector2( 685, 296 )
+
+[node name="Pizza" parent="Dinning room" instance=ExtResource( 10 )]
+position = Vector2( 656, 275 )
 
 [node name="Laundry" type="Node2D" parent="."]
 editor/display_folded = true
@@ -231,6 +281,7 @@ format = 1
 tile_data = PoolIntArray( -131036, 0, 655371, -131035, 0, 655372, -131034, 0, 655373, -131033, 0, 655373, -131032, 0, 655373, -131031, 0, 655373, -131030, 0, 655373, -131029, 0, 655373, -131028, 0, 655373, -131027, 0, 655372, -131026, 0, 655375, -65500, 0, 720907, -65499, 0, 720908, -65498, 0, 720909, -65497, 0, 720909, -65496, 0, 720909, -65495, 0, 720909, -65494, 0, 720909, -65493, 0, 720909, -65492, 0, 720909, -65491, 0, 720910, -65490, 0, 786447, 36, 0, 786443, 37, 0, 786444, 45, 0, 786446, 46, 0, 786447, 65572, 0, 786443, 65573, 0, 786444, 65581, 0, 786446, 65582, 0, 786447, 131108, 0, 786443, 131117, 0, 786446, 131118, 0, 786447, 196644, 0, 786443, 196645, 0, 786444, 196653, 0, 786446, 196654, 0, 786447, 262180, 0, 786443, 262181, 0, 786444, 262189, 0, 786446, 262190, 0, 786447, 327716, 0, 720907, 327717, 0, 851980, 327718, 0, 851981, 327719, 0, 851981, 327720, 0, 851981, 327721, 0, 851981, 327722, 0, 851981, 327723, 0, 851981, 327724, 0, 851981, 327725, 0, 851982, 327726, 0, 720911, 393252, 0, 917515, 393253, 0, 917516, 393254, 0, 917516, 393255, 0, 917516, 393256, 0, 917516, 393257, 0, 917516, 393258, 0, 917516, 393259, 0, 917516, 393260, 0, 917516, 393261, 0, 917516, 393262, 0, 917519 )
 
 [node name="Laundry" type="Node2D" parent="Laundry"]
+editor/display_folded = true
 
 [node name="laundryToKitchen" parent="Laundry/Laundry" instance=ExtResource( 4 )]
 position = Vector2( 592, 48 )
@@ -240,10 +291,49 @@ portDestineID = "kitchenToLaundry"
 
 [node name="Fog" parent="Laundry" instance=ExtResource( 5 )]
 
+[node name="Clothesline" parent="Laundry" instance=ExtResource( 11 )]
+position = Vector2( 669, 65 )
+
+[node name="Sink Laundry" parent="Laundry" instance=ExtResource( 12 )]
+position = Vector2( 635, -9 )
+
+[node name="Big stant" parent="Laundry" instance=ExtResource( 13 )]
+position = Vector2( 670, -12 )
+
+[node name="Washing machine" parent="Laundry" instance=ExtResource( 14 )]
+position = Vector2( 620, 1 )
+
+[node name="Clothers Can" parent="Laundry" instance=ExtResource( 15 )]
+position = Vector2( 612, 62 )
+
+[node name="Clothings" parent="Laundry" instance=ExtResource( 16 )]
+position = Vector2( 627, 12 )
+
+[node name="Dustpan" parent="Laundry" instance=ExtResource( 17 )]
+position = Vector2( 646, 65 )
+
+[node name="Squeegee" parent="Laundry" instance=ExtResource( 18 )]
+position = Vector2( 664, 72 )
+
+[node name="Broom" parent="Laundry" instance=ExtResource( 19 )]
+position = Vector2( 711, 71 )
+
+[node name="Mop" parent="Laundry" instance=ExtResource( 20 )]
+position = Vector2( 634, 71 )
+
+[node name="Vaccum Cleaner" parent="Laundry" instance=ExtResource( 21 )]
+position = Vector2( 703, -6 )
+
+[node name="Tiny stant" parent="Laundry" instance=ExtResource( 22 )]
+position = Vector2( 654, -12 )
+
+[node name="Bucket" parent="Laundry" instance=ExtResource( 23 )]
+position = Vector2( 707, 18 )
+
 [node name="Kitchen" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Area2D" type="Area2D" parent="Kitchen"]
+editor/display_folded = true
 position = Vector2( 80, -10 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Kitchen/Area2D"]
@@ -273,6 +363,7 @@ format = 1
 tile_data = PoolIntArray( -131049, 0, 655371, -131048, 0, 655372, -131047, 0, 655373, -131046, 0, 655373, -131045, 0, 655373, -131044, 0, 655373, -131043, 0, 655373, -131042, 0, 655373, -131041, 0, 655373, -131040, 0, 655372, -131039, 0, 655375, -65513, 0, 720907, -65512, 0, 720908, -65511, 0, 720909, -65510, 0, 720909, -65509, 0, 720909, -65508, 0, 720909, -65507, 0, 720909, -65506, 0, 720909, -65505, 0, 720909, -65504, 0, 720910, -65503, 0, 786447, 23, 0, 786443, 24, 0, 786444, 32, 0, 786446, 33, 0, 786447, 65559, 0, 786443, 65560, 0, 786444, 65568, 0, 786446, 65569, 0, 786447, 131095, 0, 786443, 131096, 0, 786444, 131105, 0, 786447, 196631, 0, 786443, 196632, 0, 786444, 196640, 0, 1114124, 196641, 0, 786447, 262167, 0, 786443, 262168, 0, 786444, 262176, 0, 786446, 262177, 0, 786447, 327703, 0, 786443, 327704, 0, 786444, 327712, 0, 786446, 327713, 0, 786447, 393239, 0, 786443, 393240, 0, 786444, 393248, 0, 786446, 393249, 0, 786447, 458775, 0, 786443, 458776, 0, 786444, 458784, 0, 786446, 458785, 0, 786447, 524311, 0, 786443, 524312, 0, 786444, 524321, 0, 786447, 589847, 0, 786443, 589848, 0, 786444, 589856, 0, 1114124, 589857, 0, 786447, 655383, 0, 786443, 655384, 0, 786444, 655392, 0, 786446, 655393, 0, 786447, 720919, 0, 786443, 720920, 0, 786444, 720928, 0, 786446, 720929, 0, 786447, 786455, 0, 786443, 786456, 0, 786444, 786464, 0, 786446, 786465, 0, 786447, 851991, 0, 786443, 851992, 0, 786444, 852000, 0, 786446, 852001, 0, 786447, 917527, 0, 720907, 917528, 0, 851980, 917529, 0, 851981, 917530, 0, 851981, 917531, 0, 1179659, 917533, 0, 1179659, 917534, 0, 851981, 917535, 0, 851981, 917536, 0, 851982, 917537, 0, 786447, 983063, 0, 917515, 983064, 0, 917516, 983065, 0, 917516, 983066, 0, 917516, 983067, 0, 917516, 983068, 0, 917516, 983069, 0, 917516, 983070, 0, 917516, 983071, 0, 917516, 983072, 0, 917516, 983073, 0, 917519 )
 
 [node name="Kitchen" type="Node2D" parent="Kitchen"]
+editor/display_folded = true
 
 [node name="kitchenToHall" parent="Kitchen/Kitchen" instance=ExtResource( 4 )]
 position = Vector2( 464, 240 )
@@ -293,6 +384,9 @@ portID = "kitchenToDinningRoom"
 portDestineID = "DinningRoomToKitchen"
 
 [node name="Fog" parent="Kitchen" instance=ExtResource( 5 )]
+
+[node name="Freezer" parent="Kitchen" instance=ExtResource( 24 )]
+position = Vector2( 473, 2 )
 
 [node name="Hall" type="Node2D" parent="."]
 editor/display_folded = true
@@ -408,10 +502,9 @@ portDestineID = "parentsRoomToRow"
 [node name="Fog" parent="Row" instance=ExtResource( 5 )]
 
 [node name="Players room" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Area2D" type="Area2D" parent="Players room"]
-editor/display_folded = true
-visible = false
 position = Vector2( 53, 50 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Players room/Area2D"]
@@ -419,7 +512,6 @@ position = Vector2( -86, -120 )
 polygon = PoolVector2Array( -16, 28, -16, 28, 53, 18, 228, 27, 228, 181, 146, 181, 148, 260, -19, 261 )
 
 [node name="coliders" type="TileMap" parent="Players room"]
-visible = false
 modulate = Color( 0.117647, 0.0627451, 0.0156863, 0.254902 )
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
@@ -431,14 +523,12 @@ format = 1
 tile_data = PoolIntArray( -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, 65534, 0, 0, 10, 0, 0, 131070, 0, 0, 65546, 0, 0, 196606, 0, 0, 131082, 0, 0, 262142, 0, 0, 196618, 0, 0, 327678, 0, 0, 262154, 0, 0, 393214, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 458750, 0, 0, 393221, 0, 0, 524286, 0, 0, 458757, 0, 0, 589822, 0, 0, 524293, 0, 0, 655358, 0, 0, 589829, 0, 0, 720894, 0, 0, 720895, 0, 0, 655360, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 720897, 0, 0, 720898, 0, 0 )
 
 [node name="Floor" type="TileMap" parent="Players room"]
-visible = false
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 65535, 0, 196615, 0, 0, 196615, 1, 0, 196615, 2, 0, 196615, 3, 0, 196615, 4, 0, 196615, 5, 0, 196615, 6, 0, 196615, 7, 0, 196615, 8, 0, 196615, 9, 0, 196615, 131071, 0, 196615, 65536, 0, 196615, 65537, 0, 196615, 65538, 0, 196615, 65539, 0, 196615, 65540, 0, 196615, 65541, 0, 196615, 65542, 0, 196615, 65543, 0, 196615, 65544, 0, 196615, 65545, 0, 196615, 196607, 0, 196615, 131072, 0, 196615, 131073, 0, 196615, 131074, 0, 196615, 131075, 0, 196615, 131076, 0, 196615, 131077, 0, 196615, 131078, 0, 196615, 131079, 0, 196615, 131080, 0, 196615, 131081, 0, 196615, 262143, 0, 196615, 196608, 0, 196615, 196609, 0, 196615, 196610, 0, 196615, 196611, 0, 196615, 196612, 0, 196615, 196613, 0, 196615, 196614, 0, 196615, 196615, 0, 196615, 196616, 0, 196615, 196617, 0, 196615, 327679, 0, 196615, 262144, 0, 196615, 262145, 0, 196615, 262146, 0, 196615, 262147, 0, 196615, 262148, 0, 196615, 262149, 0, 196615, 262150, 0, 196615, 262151, 0, 196615, 262152, 0, 196615, 262153, 0, 196615, 393215, 0, 196615, 327680, 0, 196615, 327681, 0, 196615, 327682, 0, 196615, 327683, 0, 196615, 327684, 0, 196615, 458751, 0, 196615, 393216, 0, 196615, 393217, 0, 196615, 393218, 0, 196615, 393219, 0, 196615, 393220, 0, 196615, 524287, 0, 196615, 458752, 0, 196615, 458753, 0, 196615, 458754, 0, 196615, 458755, 0, 196615, 458756, 0, 196615, 589823, 0, 196615, 524288, 0, 196615, 524289, 0, 196615, 524290, 0, 196615, 524291, 0, 196615, 524292, 0, 196615, 655359, 0, 196615, 589824, 0, 196615, 589825, 0, 196615, 589826, 0, 196615, 589827, 0, 196615, 589828, 0, 196615 )
 
 [node name="Walls" type="TileMap" parent="Players room"]
-visible = false
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
@@ -446,7 +536,6 @@ tile_data = PoolIntArray( -65539, 0, 655371, -65538, 0, 655372, -65537, 0, 65537
 
 [node name="Players Bedroom" type="Node2D" parent="Players room"]
 editor/display_folded = true
-visible = false
 
 [node name="pRoomToRow" parent="Players room/Players Bedroom" instance=ExtResource( 4 )]
 position = Vector2( 32, 176 )
@@ -455,14 +544,18 @@ portID = "pRoomToRow"
 portDestineID = "rowToPlayerRoom"
 
 [node name="Fog" parent="Players room" instance=ExtResource( 5 )]
-visible = false
 
 [node name="Furniture2" type="TileMap" parent="Players room"]
-visible = false
 format = 1
 
-[node name="Closet" parent="Players room" instance=ExtResource( 6 )]
-position = Vector2( 16, -2 )
+[node name="Computer" parent="Players room" instance=ExtResource( 25 )]
+position = Vector2( 57, 1 )
+
+[node name="Closet" parent="Players room" instance=ExtResource( 26 )]
+position = Vector2( 16, 2 )
+
+[node name="Single bed" parent="Players room" instance=ExtResource( 27 )]
+position = Vector2( 90, -5 )
 
 [node name="Parents Room" type="Node2D" parent="."]
 editor/display_folded = true
@@ -510,5 +603,14 @@ portDestineID = "rowToParentsRoom"
 
 [node name="Fog" parent="Parents Room" instance=ExtResource( 5 )]
 
-[node name="Sprite" parent="." instance=ExtResource( 7 )]
-position = Vector2( 617, 540.021 )
+[node name="Couple bed" parent="Parents Room" instance=ExtResource( 28 )]
+position = Vector2( 60, 470 )
+
+[node name="Nightstand" parent="Parents Room" instance=ExtResource( 29 )]
+position = Vector2( 44, 461 )
+
+[node name="Nightstand2" parent="Parents Room" instance=ExtResource( 29 )]
+position = Vector2( 84, 461 )
+
+[node name="Sprite" parent="." instance=ExtResource( 30 )]
+position = Vector2( 674, 560 )

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://atlas.png" type="Texture" id=1]
+[ext_resource path="res://assets/functions/bringToBackArea.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 4 )
@@ -9,23 +10,24 @@ extents = Vector2( 5, 4 )
 atlas = ExtResource( 1 )
 region = Rect2( 51, 67, 9, 12 )
 
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 1 )
-region = Rect2( 51, 67, 9, 6 )
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 5, 2 )
 
 [node name="Tiny paper box on on top" type="KinematicBody2D"]
-editor/display_folded = true
+z_index = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 197, 55 )
+position = Vector2( 5, 8 )
 shape = SubResource( 1 )
 
 [node name="Tiny Paper box" type="Sprite" parent="."]
-position = Vector2( 192, 47 )
 texture = SubResource( 2 )
 centered = false
 
-[node name="Tiny paper box on top" type="Sprite" parent="."]
-position = Vector2( 197, 50 )
-z_index = 3
-texture = SubResource( 3 )
+[node name="bringToBackArea" parent="." instance=ExtResource( 2 )]
+
+[node name="CollisionShape2D" parent="bringToBackArea" index="0"]
+position = Vector2( 5, 2 )
+shape = SubResource( 3 )
+
+[editable path="bringToBackArea"]

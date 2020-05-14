@@ -102,6 +102,7 @@ animations = [ {
 points = PoolVector2Array( 0, -3, 4, -1, 4, 4, 0, 5, -4, 4, -4, -1 )
 
 [node name="player" type="KinematicBody2D"]
+z_index = 1
 script = ExtResource( 1 )
 SPEED = 70
 

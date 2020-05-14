@@ -7,7 +7,7 @@ atlas = ExtResource( 1 )
 region = Rect2( 96, 0, 768, 16 )
 
 [node name="PalletColor" type="Sprite"]
-position = Vector2( 64, 0 )
+z_index = 1
 texture = SubResource( 1 )
 centered = false
 hframes = 48

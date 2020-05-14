@@ -14,18 +14,17 @@ atlas = ExtResource( 1 )
 region = Rect2( 18, 65, 12, 8 )
 
 [node name="Tresh can on top" type="KinematicBody2D"]
-editor/display_folded = true
+z_index = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 198, 73 )
+position = Vector2( 6, 10 )
 shape = SubResource( 1 )
 
 [node name="Tresh Can" type="Sprite" parent="."]
-position = Vector2( 192, 63 )
 texture = SubResource( 2 )
 centered = false
 
 [node name="Tresh can on top" type="Sprite" parent="."]
-position = Vector2( 198, 67 )
+position = Vector2( 6, 4 )
 z_index = 3
 texture = SubResource( 3 )

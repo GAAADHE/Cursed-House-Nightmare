@@ -3,7 +3,6 @@
 [ext_resource path="res://atlas.png" type="Texture" id=1]
 
 [node name="EasterEgg2" type="Sprite"]
-position = Vector2( 32, 16 )
 texture = ExtResource( 1 )
 centered = false
 vframes = 64
