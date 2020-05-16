@@ -1,190 +1,247 @@
 extends Node
+
 class PathFinding:
-	#pathfinding v0.1
+	#pathfinding v1.0
 	#author: GAADHE
-	#Date: 30 abr 2020
-	#Last Edit:
+	#Date: 14 maio 2020
 	
 	var openedList = []
 	var closedList = []
 	
-	var actualPosition = null
-	var botPos = null
+	var initial_point = null
+	var acctual_node = null
 	
-	var target = null
+	var map_colisions = null
+	var map_to_paint  = null
+	var target_point = null
 	
-	var map = null
+	var Node_Manager = NodeManager.new()
 	
-	
-	# positionAI, destinyAI: Type: Vector2D
-	func _init(positionAI,destinyAI,gridMap):
-		startAStar(positionAI,destinyAI,gridMap)
-		pass
-	# Separated because you can use again later.
-	func startAStar(positionAI,destinyAI,gridMap):
-		#clear all list to start again
-		reset()
+	func _init(initial_p : Vector2, target_p : Vector2, map_tile: TileMap, map_floor: TileMap):
+		initial_point = initial_p
+		target_point = Node_Manager.create_end(target_p)
+		map_colisions = map_tile
+		map_to_paint = map_floor
 		
-		# set map level
-		map = gridMap
+		#open the first node in acctual position
+		_add_node_opened(Node_Manager.create_begin(initial_p))
+		var f = _find()
+		var path = _final_path()
 		
-		# set bot var position
-		botPos = positionAI
+		for n in path:
+			map_to_paint.set_cell(n.position.x,n.position.y, 1, false, false, false,Vector2( 3, 7 ))
 		
-		
-		#set initial field
-		var node_initial = create_node(positionAI,0, "none", "begin")
-		add_to_opened(node_initial)
-		
-		
-		#set destiny field
-		target = create_node(destinyAI,0, "none", "end")
-		
-		
-		#set initial node
-		actualPosition = node_initial
-		
-		#start loop
-		set_finding_state(true)
-		
-		
-	func _process(delta):
-		if(get_finding_state() == true):
-			var nodeWithLessF = find_node_low_cost_f()
-			add_to_closed(nodeWithLessF)
-			remove_opened(nodeWithLessF)
-			actualPosition = nodeWithLessF
-			findNeighbors(actualPosition)
-			pass
-		pass
-	
-	# var to control loop of find
-	var findingStatus = false
-	func set_finding_state(value):
-		findingStatus = value
-	func get_finding_state():
-		return findingStatus
-		
-	# Algorithm to scan filds
-	func findNeighbors(actualNode):
-		# used to scan around any position
-		var Neighbors = [[-1,-1],[ 0,-1],[ 1,-1],
-						[-1, 0],        [ 1, 0],
-						[-1, 1],[ 0, 1],[ 1, 1]]
-						
-		for n in Neighbors:
-			# calc actual position using 8 possibilities of array Neighbors
-			var posRelativeToPosNode = Vector2(float(n[0]),float(n[1])) - actualNode.position
+	func _find():
+		var control_loop = true
+		while(control_loop):
 			
-			#Verify if have any tile blocking the way
-			if has_path(posRelativeToPosNode):
-				if !aready_in_list(posRelativeToPosNode):
-					var new_node = null
-					#create a new node
-					# if is a diag increase cost, because movement in diag is a bit longer than horizontal and vertical.
-					if n == [-1,-1] or n == [1,-1] or n == [-1,1] or n == [1,1]:
-						new_node = create_node(posRelativeToPosNode,14)+actualNode.cost
+			acctual_node = _find_low_cost_f()
+			if acctual_node == null: return 0
+			
+			map_to_paint.set_cell(acctual_node.position.x,acctual_node.position.y, 1, false, false, false,Vector2( 21, 0 ))
+			_add_node_closed(acctual_node)
+			_remove_node_opened(acctual_node)
+			
+			if acctual_node.position == target_point.position: return 1
+			
+			for neighbor in _find_neighbors(acctual_node):
+				# if the node aren't in open list----------------
+				if !_pos_are_in_list_opened(neighbor.position):
+					# give the cost
+					if _is_move_diag(neighbor.position,acctual_node.position):
+						neighbor.g = 14 + acctual_node.g
 					else:
-						new_node = create_node(posRelativeToPosNode,10)+actualNode.cost
-					#append to list
-					
-					new_node.parent = actualNode.name
-	
-					add_to_opened(new_node)
+						neighbor.g = 10 + acctual_node.g
+					# calculate manhattan
+					var distance = neighbor.position + acctual_node.position
+					neighbor.h =  (distance.x + distance.y)*10
+					# calculate F = G + H
+					neighbor.f = neighbor.g + neighbor.h
+					# put parent
+					neighbor.parent = acctual_node.position
+					openedList.push_back(neighbor)
 				else:
-					#if already in list verify if can short using actual position as parent
-					#-----------------
-					#by default
-					var lower_neighbour = openedList[0]
-					var f_lower_cost = f(lower_neighbour.cost,h(lower_neighbour.position))
-					var cost_of_acctual = f(actualNode.cost,h(actualNode.position))
-					# find low cost neighbour
-					for x in openedList:
-						# F=G+H - reseted for each item
-						var cost_f_of_x = f(x.cost , h(x.position))
-						if(cost_f_of_x + cost_of_acctual < f_lower_cost):
-							#set object lower cost to var
-							lower_neighbour = x
-							#set cost of object
-							f_lower_cost = cost_f_of_x
-							pass
-						pass
-					#re parent neighbour-------------------------------------
-					actualPosition = lower_neighbour
-					pass
-			pass
-		pass
-	# by the position veify is alreandy in list
-	func aready_in_list(posNode):
-		for i in openedList:
-			if i.position == posNode:
-				return true
-		return false
-	#------------------------------------------------------
-	#Manhattan
-	func h(nodePosition):
-		# add X
-		var H = (-nodePosition.x + target.position.x)*10
-		# add Y
-		H += (-nodePosition.y + target.position.y)*10
-		return H
-	#F
-	func f(g,h):
-		return g+h
-	
-	# find the cust f 
-	func find_node_low_cost_f():
-		if("cost" in openedList[0]):
-			# set by default the first item
-			var low_cost = openedList[0]
-			# F=G+H - by default the first item
-			var f_low_cost = low_cost.cost + h(low_cost.position)
-			# try one by one find lower
-			for x in openedList:
-				# F=G+H - reseted for each item
-				var cost_f_of_x = f(x.cost , h(x.position))
-				if(cost_f_of_x < f_low_cost):
-					low_cost = x
-					f_low_cost = cost_f_of_x
+					# try test if the node can be used as a shortcut, if aready in list opened.
+					# if it are in openedList do
+					var new_g
+					# cost of diagonal / cost h or v
+					if(_is_move_diag(neighbor.position,acctual_node.position)):
+						new_g = 14 + acctual_node.g
+					else:
+						new_g = 10 + acctual_node.g
+					
+					# new cost of the shortcut
+					if(new_g < acctual_node.g):
+						neighbor.parent = acctual_node.position
+						neighbor.g = new_g
+						neighbor.f = neighbor.g + neighbor.h
 					pass
 				pass
-			return low_cost
-		else:
-			print("error trying find cost: it\'s not a node!")
-	
-	#
-	func reset():
-		openedList.clear()
-		closedList.clear()
-	#node methods
-	func create_node(position = Vector2(0,0),cost = null,parent = null, name = "noname"):
-		var map_node = {"cost":cost,"position":position,"parent":str(parent),"name":str(name)}
-		return map_node
+				if len(openedList) == 0: return -1
+			pass
 		pass
-	func is_actual_node(node):
-		node.position
+		
+		
+	# Heristic
+	# here can have some tie in the select, but the loop will select the first found.
+	func _find_low_cost_f():
+		if(len(openedList) > 0):
+			var low = openedList[0]
+			for x in openedList:
+				if(x.f < low.f):
+					low = x
+					pass
+				pass
+			return low
+		"""else:
+			return 0"""
+		pass
 	
-	#verify if have can pass through to use any way
-	func has_path(position):
-		# you need edit this depending of what way you use.
-		if map.get_cell(position) > -1:
-			#can't pass through
+	# neighbors
+	func _find_neighbors(acct_node):
+		var array = []
+		var positions = [Vector2(-1,-1),Vector2(-1, 0),Vector2( 1, 1),
+						 Vector2(-1, 0),               Vector2( 0, 1),
+						 Vector2(-1, 1),Vector2( 1, 0),Vector2( 1, 1)]
+		
+		for pos in positions:
+			# if not have way jump to next 
+			var neighbor_position = pos + acct_node.position
+			if(!_verify_way(neighbor_position,acct_node.position)):continue
+			
+			# create then the node and push in array
+			array.push_back(Node_Manager.create_node(neighbor_position))
+			
+			pass
+		# scan new nodes
+		return array
+		
+	
+	func _verify_way(pos:Vector2, acct_po:Vector2):
+		# ignore if are in closed list.
+		for node in closedList:
+			if node.position == pos:
+				return false
+				
+		# ignore if node is block in map.
+		if(_has_block_in_cell(pos)):
 			return false
-		else:
-			#can :)
+		# ignore if diag is blocked.
+		if _is_move_diag(pos, acct_po) and !_is_diags_open(pos, acct_po):
+			return false
+			
+		return true
+	func _has_block_in_cell(pos):
+		if map_colisions.get_cell(pos.x,pos.y) > -1:
 			return true
 		
-	#list methods
-	func add_to_opened(node):
-		openedList.append(node)
+	func _is_move_diag(pos,acct_po):
+		# Debug later---------------------------------
+		var vect = pos - acct_po
+		# diags
+		# -------------------- Some wrong are wrong here
+		var digs = [Vector2(-1,-1), Vector2(-1, 1),
+					Vector2( 1,-1), Vector2( 1, 1)]
+		for d in digs:
+			if(vect==d):
+				return true
+		return false
 		
-	func add_to_closed(node):
-		closedList.append(node)
-	func remove_opened(node):
-		var i = openedList.find(node)
-		openedList.remove(i)
-	func remove_closed(node):
-		var i = closedList.find(node)
-		openedList.remove(i)
+	# function to see if movement in diagnal is blocked
+	# return true if are open neighbor
+	func _is_diags_open(pos, acct_po):
+		# vertical and horizontals
+		# i was very laziness to think in other solution.
+		var vect = pos - acct_po
+		# Left top
+		if vect == Vector2(-1,-1):
+			if _has_block_in_cell(pos + Vector2(1,0)) or _has_block_in_cell(pos + Vector2(0,1)):
+				return false
+			pass
+		# Right top
+		if vect == Vector2(1,-1):
+			if _has_block_in_cell(pos + Vector2(-1,0)) or _has_block_in_cell(pos + Vector2(0,1)):
+				return false
+			pass
+		# Left down
+		if vect == Vector2(-1,1):
+			if _has_block_in_cell(pos + Vector2(0,-1)) or _has_block_in_cell(pos + Vector2(1,0)):
+				return false
+			pass
+		# Right down
+		if vect == Vector2(1,1):
+			if _has_block_in_cell(pos + Vector2(-1,0)) or _has_block_in_cell(pos + Vector2(0,-1)):
+				return false
+			pass
+		
+		return true
 	
 	
+	# list
+	func _pos_are_in_list_opened(pos:Vector2):
+		for n in openedList:
+			if(n.position == pos):
+				return true
+			pass
+		return false
+	# return the path when finish following the parents nodes in list opened.
+	func _catch_node_by_pos(pos):
+		for n in closedList:
+			if n.position == pos:
+				return n
+		return 
+	func _final_path():
+		#here will the final nodes
+		
+		var path = []
+		
+		# invert to turn more easy to work
+		closedList.invert()
+		
+		# push the target node first
+		if len(closedList) > 0:
+			path.push_front(closedList[0])
+		else:
+			return -1
+		
+		var control = true
+		while(control):
+			
+			# catch the parent of node
+			path.push_front(_catch_node_by_pos(path[0].parent))
+			
+			if(path[0].has("name")):
+				if(path[0].name == "begin"):
+					control = false
+					break
+			
+			pass
+			
+		return path
+	# nodes
+	func _add_node_opened(nodeM:Dictionary):
+		openedList.push_back(nodeM)
+		pass
+	func _remove_node_opened(nodeM:Dictionary):
+		var i = openedList.find(nodeM)
+		openedList.remove(i)
+		pass
+		
+	func _add_node_closed(nodeM:Dictionary):
+		closedList.push_back(nodeM)
+		pass
+	func _remove_node_closed(nodeM:Dictionary):
+		var i = closedList.find(nodeM)
+		closedList.remove(i)
+		pass
+		
+class NodeManager:
+	func create_begin(pos):
+		return {"position":pos, "f":0, "g":0, "h":0, "name":"begin"}
+		pass
+	func create_end(pos):
+		return {"position":pos, "f":0, "g":0, "h":0, "name":"end"}
+		pass
+	func create_node(pos:Vector2, parent = null, f:int = 0, g:int = 0, h:int = 0, name:String = "defaul"):
+		return {"position":pos, "parent":parent,"f":f, "g":g, "h":h, "name":name}
+		pass
