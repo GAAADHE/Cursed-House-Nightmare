@@ -6,12 +6,10 @@
 [ext_resource path="res://House.tscn" type="PackedScene" id=4]
 
 [node name="Main" type="Node"]
-editor/display_folded = true
 script = ExtResource( 1 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1054.03, 365.895 )
-z_index = 0
+position = Vector2( 1102.42, 359.038 )
 
 [node name="Node" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1047.63, 83.1796 )

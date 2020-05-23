@@ -1,9 +1,10 @@
 extends Node
-
+#warnings-disable:
 class PathFinding:
 	#pathfinding v1.0
 	#author: GAADHE
 	#Date: 14 maio 2020
+	var debug_color = false
 	
 	var openedList = []
 	var closedList = []
@@ -14,7 +15,7 @@ class PathFinding:
 	var map_colisions = null
 	var map_to_paint  = null
 	var target_point = null
-	
+	var final_path = null
 	var Node_Manager = NodeManager.new()
 	
 	func _init(initial_p : Vector2, target_p : Vector2, map_tile: TileMap, map_floor: TileMap):
@@ -26,10 +27,11 @@ class PathFinding:
 		#open the first node in acctual position
 		_add_node_opened(Node_Manager.create_begin(initial_p))
 		var f = _find()
-		var path = _final_path()
-		
-		for n in path:
-			map_to_paint.set_cell(n.position.x,n.position.y, 1, false, false, false,Vector2( 3, 7 ))
+		final_path = _final_path()
+		if debug_color:
+			for n in final_path:
+				map_to_paint.set_cell(n.position.x,n.position.y, 1, false, false, false,Vector2( 10, 0 ))
+		# return the final path
 		
 	func _find():
 		var control_loop = true
@@ -38,7 +40,8 @@ class PathFinding:
 			acctual_node = _find_low_cost_f()
 			if acctual_node == null: return 0
 			
-			map_to_paint.set_cell(acctual_node.position.x,acctual_node.position.y, 1, false, false, false,Vector2( 21, 0 ))
+			if debug_color:
+				map_to_paint.set_cell(acctual_node.position.x,acctual_node.position.y, 1, false, false, false,Vector2( 21, 0 ))
 			_add_node_closed(acctual_node)
 			_remove_node_opened(acctual_node)
 			
@@ -100,7 +103,7 @@ class PathFinding:
 	# neighbors
 	func _find_neighbors(acct_node):
 		var array = []
-		var positions = [Vector2(-1,-1),Vector2(-1, 0),Vector2( 1, 1),
+		var positions = [Vector2(-1,-1),Vector2(0, -1),Vector2( 1, -1),
 						 Vector2(-1, 0),               Vector2( 0, 1),
 						 Vector2(-1, 1),Vector2( 1, 0),Vector2( 1, 1)]
 		

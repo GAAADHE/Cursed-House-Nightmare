@@ -1,11 +1,64 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://tilset.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/bomb/bomb.16.png" type="Texture" id=2]
 [ext_resource path="res://AI.gd" type="Script" id=3]
-[ext_resource path="res://assets/player/avatar4.png" type="Texture" id=4]
+[ext_resource path="res://assets/zombie/zombie1.png" type="Texture" id=4]
+[ext_resource path="res://assets/zombie/zombie4.png" type="Texture" id=5]
+[ext_resource path="res://assets/zombie/zombie13.png" type="Texture" id=6]
+[ext_resource path="res://assets/zombie/zombie14.png" type="Texture" id=7]
+[ext_resource path="res://assets/zombie/zombie15.png" type="Texture" id=8]
+[ext_resource path="res://assets/zombie/zombie16.png" type="Texture" id=9]
+[ext_resource path="res://assets/zombie/zombie2.png" type="Texture" id=10]
+[ext_resource path="res://assets/zombie/zombie3.png" type="Texture" id=11]
+[ext_resource path="res://assets/zombie/zombie5.png" type="Texture" id=12]
+[ext_resource path="res://assets/zombie/zombie6.png" type="Texture" id=13]
+[ext_resource path="res://assets/zombie/zombie7.png" type="Texture" id=14]
+[ext_resource path="res://assets/zombie/zombie8.png" type="Texture" id=15]
+[ext_resource path="res://assets/zombie/zombie17.png" type="Texture" id=16]
+[ext_resource path="res://assets/zombie/zombie18.png" type="Texture" id=17]
+[ext_resource path="res://assets/zombie/zombie19.png" type="Texture" id=18]
+[ext_resource path="res://assets/zombie/zombie20.png" type="Texture" id=19]
+[ext_resource path="res://assets/zombie/zombie9.png" type="Texture" id=20]
+[ext_resource path="res://assets/zombie/zombie10.png" type="Texture" id=21]
+[ext_resource path="res://assets/zombie/zombie11.png" type="Texture" id=22]
+[ext_resource path="res://assets/zombie/zombie12.png" type="Texture" id=23]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "walk_diag_top",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "walk_top",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "walk_diag_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "walk_horizontal",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 3.54864
 
 [node name="Node2D" type="Node2D"]
 
@@ -15,7 +68,7 @@
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 1, 10, 0, 131072, 1, 393226, 131073, 1, 393226, 131074, 1, 393226, 131075, 1, 393226, 131076, 1, 393226, 131077, 1, 393226, 131078, 1, 393226, 131079, 1, 393226, 131080, 1, 393226, 131081, 1, 393226, 196608, 1, 393226, 196617, 1, 327690, 262144, 1, 393226, 262152, 1, 327690, 262153, 1, 327690, 327680, 1, 393226, 327687, 1, 327690, 327689, 1, 327690, 327690, 1, 327690, 327691, 1, 327690, 327692, 1, 327690, 327693, 1, 327690, 327694, 1, 327690, 327695, 1, 327690, 327696, 1, 327690, 393216, 1, 393226, 393217, 1, 327690, 393218, 1, 327690, 393219, 1, 327690, 393220, 1, 327690, 393221, 1, 327690, 393222, 1, 327690, 393232, 1, 327690, 524284, 1, 327690, 524285, 1, 327690, 524286, 1, 327690, 524287, 1, 327690, 458752, 1, 393226, 458753, 1, 327690, 458768, 1, 327690, 589820, 1, 327690, 589823, 1, 327690, 524288, 1, 327690, 524304, 1, 327690, 655356, 1, 327690, 655359, 1, 327690, 589824, 1, 327690, 589826, 1, 327690, 589827, 1, 327690, 589828, 1, 327690, 589829, 1, 327690, 589830, 1, 327690, 589831, 1, 327690, 589832, 1, 327690, 589833, 1, 327690, 589834, 1, 327690, 589839, 1, 327690, 589840, 1, 327690, 720892, 1, 327690, 720895, 1, 327690, 655360, 1, 327690, 655366, 1, 327690, 655369, 1, 327690, 655370, 1, 327690, 655376, 1, 327690, 786428, 1, 327690, 786431, 1, 327690, 720896, 1, 327690, 720897, 1, 327690, 720898, 1, 327690, 720902, 1, 327690, 720905, 1, 327690, 720906, 1, 327690, 720907, 1, 327690, 720908, 1, 327690, 720909, 1, 327690, 720912, 1, 327690, 851964, 1, 327690, 851967, 1, 327690, 786432, 1, 327690, 786433, 1, 327690, 786434, 1, 327690, 786435, 1, 327690, 786438, 1, 327690, 786445, 1, 327690, 786448, 1, 327690, 917500, 1, 327690, 917502, 1, 327690, 917503, 1, 327690, 851968, 1, 393226, 851969, 1, 393226, 851970, 1, 393226, 851971, 1, 393226, 851972, 1, 393226, 851974, 1, 327690, 851975, 1, 393226, 851976, 1, 393226, 851977, 1, 393226, 851978, 1, 327690, 851979, 1, 327690, 851984, 1, 327690, 983036, 1, 327690, 983038, 1, 327690, 983039, 1, 327690, 917504, 1, 327690, 917505, 1, 327690, 917506, 1, 327690, 917507, 1, 327690, 917508, 1, 327690, 917510, 1, 327690, 917515, 1, 327690, 917516, 1, 327690, 917517, 1, 327690, 917518, 1, 327690, 917519, 1, 327690, 1048572, 1, 327690, 983044, 1, 327690, 983046, 1, 327690, 1114109, 1, 327690, 1114110, 1, 327690, 1114111, 1, 327690, 1048576, 1, 327690, 1048577, 1, 327690, 1048578, 1, 327690, 1048579, 1, 327690, 1048580, 1, 327690, 1048581, 1, 327690, 1048582, 1, 327690 )
+tile_data = PoolIntArray( -196599, 1, 327688, -196598, 1, 327688, -196597, 1, 327688, -131064, 1, 327688, -131060, 1, 327688, -65529, 1, 327688, -65523, 1, 327688, 6, 1, 327688, 10, 1, 327688, 14, 1, 327688, 65541, 1, 327688, 65545, 1, 327688, 65547, 1, 327688, 65551, 1, 327688, 131076, 1, 327688, 131080, 1, 327688, 131084, 1, 327688, 131088, 1, 327688, 196612, 1, 327688, 196615, 1, 327688, 196621, 1, 327688, 196625, 1, 327688, 327677, 1, 327688, 327678, 1, 327688, 327679, 1, 327688, 262144, 1, 327688, 262145, 1, 327688, 262146, 1, 327688, 262147, 1, 327688, 262148, 1, 327688, 262149, 1, 327688, 262152, 1, 327688, 262157, 1, 327688, 262158, 1, 327688, 262162, 1, 327688, 393213, 1, 327688, 327683, 1, 327688, 327685, 1, 327688, 327686, 1, 327688, 327689, 1, 327688, 327692, 1, 327688, 327695, 1, 327688, 327699, 1, 327688, 458749, 1, 327688, 458751, 1, 327688, 393216, 1, 327688, 393217, 1, 327688, 393218, 1, 327688, 393219, 1, 327688, 393222, 1, 327688, 393226, 1, 327688, 393227, 1, 327688, 393232, 1, 327688, 393235, 1, 327688, 524285, 1, 327688, 524287, 1, 327688, 458752, 1, 327688, 458759, 1, 327688, 458763, 1, 327688, 458767, 1, 327688, 458771, 1, 327688, 589821, 1, 327688, 589823, 1, 327688, 524288, 1, 327688, 524291, 1, 327688, 524296, 1, 327688, 524299, 1, 327688, 524302, 1, 327688, 524306, 1, 327688, 655357, 1, 327688, 655359, 1, 327688, 589824, 1, 327688, 589825, 1, 327688, 589826, 1, 327688, 589827, 1, 327688, 589828, 1, 327688, 589829, 1, 327688, 589832, 1, 327688, 589835, 1, 327688, 589841, 1, 327688, 720893, 1, 327688, 720895, 1, 327688, 655360, 1, 327688, 655361, 1, 327688, 655363, 1, 327688, 655365, 1, 327688, 655368, 1, 327688, 655371, 1, 327688, 655372, 1, 327688, 655373, 1, 327688, 655374, 1, 327688, 655375, 1, 327688, 655376, 1, 327688, 786429, 1, 327688, 786431, 1, 327688, 720896, 1, 327688, 720897, 1, 327688, 720899, 1, 327688, 720900, 1, 327688, 720904, 1, 327688, 720907, 1, 327688, 851965, 1, 327688, 786435, 1, 327688, 786439, 1, 327688, 786443, 1, 327688, 917501, 1, 327688, 917502, 1, 327688, 917503, 1, 327688, 851968, 1, 327688, 851969, 1, 327688, 851970, 1, 327688, 851974, 1, 327688, 851978, 1, 327688, 917505, 1, 327688, 917509, 1, 327688, 917513, 1, 327688, 983041, 1, 327688, 983044, 1, 327688, 983048, 1, 327688, 1048577, 1, 327688, 1048583, 1, 327688, 1114113, 1, 327688, 1114118, 1, 327688, 1179650, 1, 327688, 1179651, 1, 327688, 1179652, 1, 327688, 1179653, 1, 327688 )
 
 [node name="floor" type="TileMap" parent="Chão"]
 tile_set = ExtResource( 1 )
@@ -24,7 +77,7 @@ format = 1
 
 [node name="Target" type="Position2D" parent="Chão"]
 editor/display_folded = true
-position = Vector2( 190.721, 113.908 )
+position = Vector2( 224.434, 97.6224 )
 
 [node name="Target2" type="Sprite" parent="Chão/Target"]
 position = Vector2( -8.29865, -9.83545 )
@@ -32,12 +85,19 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="Zombie" type="KinematicBody2D" parent="Chão"]
-position = Vector2( 89.1386, 169.391 )
+position = Vector2( 28.0777, 120.758 )
 script = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="Chão/Zombie"]
-position = Vector2( -0.291992, 0.291962 )
-texture = ExtResource( 4 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Chão/Zombie"]
+frames = SubResource( 1 )
+animation = "walk_horizontal"
+speed_scale = 2.0
+centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chão/Zombie"]
-shape = SubResource( 1 )
+position = Vector2( 7.57347, 8.68023 )
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="Chão/Zombie"]
+position = Vector2( 7.71644, 6.00168 )
+current = true
